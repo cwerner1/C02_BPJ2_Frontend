@@ -52,6 +52,7 @@ before_install:
 - nvm install 8
 - yarn global add ionic cordova
 before_script:
+- chmod +x travis/*.sh
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./travis/addkeys.sh ; fi
 script:
 - yarn install
