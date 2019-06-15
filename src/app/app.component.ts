@@ -23,7 +23,7 @@ export class AppComponent {
     {
       title: 'Profil',
       url: '/profil',
-      icon: 'boat'
+      icon: 'beer'
     }
   ];
 
