@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'profil',
     loadChildren: './profil/profil.module#ProfilPageModule'
-  }
+  },
+  { path: 'inserat',
+    loadChildren: './inserat/inserat.module#InseratPageModule' },  { path: 'favorites', loadChildren: './favorites/favorites.module#FavoritesPageModule' }
+
+
 ];
 
 @NgModule({

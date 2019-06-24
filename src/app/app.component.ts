@@ -13,18 +13,28 @@ export class AppComponent {
     {
       title: 'Home',
       url: '/home',
+      icon: 'apps'
+    },
+    {
+      title: 'Wohnung Finden',
+      url: '/list',
+      icon: 'search'
+    },
+    {
+      title: 'Inserat Erstellen',
+      url: '/inserat',
       icon: 'home'
     },
     {
-      title: 'Wohnungen',
-      url: '/list',
-      icon: 'list'
+      title: 'Favoriten',
+      url: '/favorites',
+      icon: 'heart'
     },
     {
       title: 'Profil',
       url: '/profil',
-      icon: 'beer'
-    }
+      icon: 'contact'
+    },
   ];
 
   constructor(
