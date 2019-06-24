@@ -31,6 +31,11 @@ export class AppComponent {
       icon: 'heart'
     },
     {
+      title: 'Preisvergleich',
+      url: '/preisvergleich',
+      icon: 'cash'
+    },
+    {
       title: 'Profil',
       url: '/profil',
       icon: 'contact'

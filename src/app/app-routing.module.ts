@@ -20,7 +20,8 @@ const routes: Routes = [
     loadChildren: './profil/profil.module#ProfilPageModule'
   },
   { path: 'inserat',
-    loadChildren: './inserat/inserat.module#InseratPageModule' },  { path: 'favorites', loadChildren: './favorites/favorites.module#FavoritesPageModule' }
+    loadChildren: './inserat/inserat.module#InseratPageModule' },  { path: 'favorites', loadChildren: './favorites/favorites.module#FavoritesPageModule' },
+  { path: 'preisvergleich', loadChildren: './preisvergleich/preisvergleich.module#PreisvergleichPageModule' }
 
 
 ];
