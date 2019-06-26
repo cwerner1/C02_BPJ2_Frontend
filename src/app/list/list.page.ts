@@ -31,8 +31,6 @@ export class ListPage implements OnInit {
     }
 
     load() {
-        const headers = new Headers();
-
         const apiendpoint = 'http://127.0.0.1:8080/wohnung/all';
 
         return this.http.get(apiendpoint).subscribe(data => {
