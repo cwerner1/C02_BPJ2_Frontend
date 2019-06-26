@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import 'rxjs/add/operator/map';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
@@ -13,14 +13,17 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 export class WohnungPage implements OnInit {
     wohnung: any;
 
-    constructor(public http: HttpClient) {
-        const id = 28;
-        this.wohnung = null;
-        this.load(id);
+    constructor(public http: HttpClient, private route: ActivatedRoute) {
+
     }
 
     ngOnInit() {
+    }
 
+    ionViewWillEnter() {
+        const id = this.route.snapshot.paramMap.get('id');
+        this.wohnung = null;
+        this.load(id);
     }
 
     load(id) {

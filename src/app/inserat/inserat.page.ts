@@ -23,7 +23,7 @@ export class InseratPage implements OnInit {
         headers.append('Accept', 'application/json');
         headers.append('Content-Type', 'application/json');
 
-
+        this.router.
         this.http.post('http://127.0.0.1:8080/wohnung/add', form.value, {headers})
             .subscribe(data => {
                 const jsonData: any = data;
