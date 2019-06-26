@@ -11,13 +11,11 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 })
 
 export class InseratPage implements OnInit {
-    uploadForm: FormGroup;
 
     constructor(private formBuilder: FormBuilder, private router: Router, public http: HttpClient) {
     }
 
     ngOnInit() {
-        this.uploadForm = this.formBuilder.group({});
     }
 
     sendPostRequest(form: any) {
