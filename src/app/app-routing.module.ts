@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
+import {WohnungPage} from './wohnung/wohnung.page';
 
 
 const routes: Routes = [
@@ -32,7 +33,8 @@ const routes: Routes = [
     {path: 'login', loadChildren: './login/login.module#LoginPageModule'},
     {path: 'register', loadChildren: './register/register.module#RegisterPageModule'},
     // {path: 'special', component: SpecialPage, canActivate: [AuthGuard]},
-    {path: 'wohnung', loadChildren: './wohnung/wohnung.module#WohnungPageModule'}
+    //   {path: 'wohnung', loadChildren: './wohnung/wohnung.module#WohnungPageModule'}
+    {path: 'wohnung/:id', loadChildren: './wohnung/wohnung.module#WohnungPageModule'},
 
 
 ];
