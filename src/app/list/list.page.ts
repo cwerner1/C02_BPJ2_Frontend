@@ -10,16 +10,6 @@ import {IonItemSliding} from '@ionic/angular';
     templateUrl: 'list.page.html',
     styleUrls: ['list.page.scss']
 })
-interface IWohnung {
-    id: string;
-    address: string;
-    city: string;
-    rent: string;
-    note: string;
-    icon: string;
-    description: string;
-}
-
 export class ListPage implements OnInit {
     private selectedItem: any;
     private icons = [
@@ -34,7 +24,7 @@ export class ListPage implements OnInit {
         'bluetooth',
         'build'
     ];
-    public items: Array<IWohnung> = [];
+    public items: Array<{ id: string; address: string; city: string; rent: string; note: string; icon: string; description: string }> = [];
 
     constructor(public http: HttpClient) {
         this.load();
