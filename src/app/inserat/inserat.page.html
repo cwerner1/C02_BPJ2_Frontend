@@ -1,37 +1,38 @@
 <ion-header class="ion-hide-lg-up">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Erstelle dein Wohnungs-Inserat
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Erstelle dein Wohnungs-Inserat
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <form [formGroup]="uploadForm">aaa
+        <!-- Inputs with labels -->
+        <ion-item>
+            <ion-label position="floating"><p>Adresse</p></ion-label>
+            <ion-input name="description" clearInput required="true" placeholder="Beschreibung der Wohnung"></ion-input>
+            <ion-input name="street" clearInput required="true" placeholder="Straße"></ion-input>
+            <ion-input name="postalCode" clearInput required="true" placeholder="Postleitzahl"></ion-input>
+            <ion-input name="city" placeholder="Stadt"></ion-input>
+            <ion-input name="country" clearInput required="true" placeholder="Land"></ion-input>
+        </ion-item>
 
-  <!-- Inputs with labels -->
-  <ion-item>
-  <ion-label position="floating"><p>Adresse</p></ion-label>
-  <ion-input clearInput required="true" placeholder="Beschreibung der Wohnung"></ion-input>
-  <ion-input clearInput required="true" placeholder="Straße"></ion-input>
-  <ion-input clearInput required="true" placeholder="Postleitzahl"></ion-input>
-      <ion-input placeholder="Stadt"></ion-input>
-      <ion-input clearInput required="true" placeholder="Land"></ion-input>
-</ion-item>
-
-  <ion-item>
-    <ion-label position="floating"><p>Details </p></ion-label>
-    <ion-input clearInput required="true" placeholder="Gesamtmiete"></ion-input>
-    <ion-input clearInput required="true" placeholder="m2"></ion-input>
-    <ion-input clearInput required="true" placeholder="Raumanzahl"></ion-input>
-  </ion-item>
-
-
-    <ion-button (click)="sendPostRequest()" class="inseratButton" color="success" expand="full">
-    Inseriere Wohnung
-  </ion-button>
+        <ion-item>
+            <ion-label position="floating"><p>Details </p></ion-label>
+            <ion-input name="rent" clearInput required="true" placeholder="Gesamtmiete"></ion-input>
+            <ion-input name="surfaceArea" clearInput required="true" placeholder="m2"></ion-input>
+            <ion-input name="roomCount" clearInput required="true" placeholder="Raumanzahl"></ion-input>
+        </ion-item>
 
 
+        <ion-button (click)="sendPostRequest()" class="inseratButton" color="success" expand="full">
+            Inseriere Wohnung
+        </ion-button>
+
+    </form>
 </ion-content>
+
