@@ -4,6 +4,10 @@ import {Router} from '@angular/router';
 import 'rxjs/add/operator/map';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
+interface IWohnungCreated {
+    wohnung_id: string;
+}
+
 @Component({
     selector: 'app-inserat',
     templateUrl: './inserat.page.html',
@@ -23,11 +27,11 @@ export class InseratPage implements OnInit {
         headers.append('Accept', 'application/json');
         headers.append('Content-Type', 'application/json');
 
-        this.router.
+
         this.http.post('http://127.0.0.1:8080/wohnung/add', form.value, {headers})
             .subscribe(data => {
-                const jsonData: any = data;
-                console.log(jsonData);
+                const jsonData = data as IWohnungCreated;
+                this.router.navigate(['/wohnung', jsonData.wohnung_id]);
 
             }, error => {
                 console.error(error);
