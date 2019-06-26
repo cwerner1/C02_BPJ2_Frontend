@@ -4,7 +4,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    // change to 'home' for start there
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -20,8 +21,11 @@ const routes: Routes = [
     loadChildren: './profil/profil.module#ProfilPageModule'
   },
   { path: 'inserat',
-    loadChildren: './inserat/inserat.module#InseratPageModule' },  { path: 'favorites', loadChildren: './favorites/favorites.module#FavoritesPageModule' },
-  { path: 'preisvergleich', loadChildren: './preisvergleich/preisvergleich.module#PreisvergleichPageModule' }
+    loadChildren: './inserat/inserat.module#InseratPageModule' },
+  { path: 'favorites', loadChildren: './favorites/favorites.module#FavoritesPageModule' },
+  { path: 'preisvergleich', loadChildren: './preisvergleich/preisvergleich.module#PreisvergleichPageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+  { path: 'register', loadChildren: './register/register.module#RegisterPageModule' }
 
 
 ];

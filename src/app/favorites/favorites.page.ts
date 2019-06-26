@@ -10,7 +10,7 @@ export class FavoritesPage implements OnInit {
   constructor() {
     for (let i = 1; i < 11; i++) {
       this.items.push({
-        title: 'Addresse ' + i,
+        title: 'Address ' + i,
         note: 'This is your Favorite #' + i,
         icon: 'home'
       });

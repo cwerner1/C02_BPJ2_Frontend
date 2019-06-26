@@ -10,7 +10,6 @@
 </ion-header>
 
 <ion-content>
-
   <div id="profile-bg"></div>
   <div id="content">
     <div id="profile-info">
@@ -20,6 +19,20 @@
       <h5><i class="ion ion-calendar"></i> 23-08-1990</h5>
       <h5><i></i>Adresse</h5>
     </div>
+    <div class="PostedFlats">
+      <ion-list>
+        <ion-item *ngFor="let item of items">
+          <ion-icon [name]="item.icon" slot="start"></ion-icon>
+          {{item.title}}
+          <div class="item-note" slot="end">
+            <ion-button color="danger" fill="outline">
+              {{item.note}}
+              <ion-icon slot="end" name="trash"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-item>
+      </ion-list>
+    </div>
   </div>
-
 </ion-content>
+

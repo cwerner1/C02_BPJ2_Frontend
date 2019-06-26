@@ -37,10 +37,13 @@ ion-header{
   }
 }
 
-.logoTool{
-  height: 1.25rem;
-  width: 1.25rem;
-  margin: 15px 10px 10px 10px;
+.headerLogo{
+  display: inline;
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  margin-right: 32px;
+  margin-left: 10px;
 }
 
 ion-footer{
