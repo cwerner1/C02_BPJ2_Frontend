@@ -19,12 +19,13 @@ export class ProfilPage implements OnInit {
     'bluetooth',
     'build'
   ];
-  public items: Array<{ title: string; note: string; icon: string }> = [];
+  public items: Array<{ title: string; noteOne: string; noteTwo: string; icon: string }> = [];
   constructor() {
     for (let i = 1; i < 4; i++) {
       this.items.push({
         title: 'Flat ' + i,
-        note: 'Delete',
+        noteOne: 'Edit',
+        noteTwo: 'Delete',
         icon: 'home',
       });
     }
