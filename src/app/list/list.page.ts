@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
+import { IonItemSliding} from '@ionic/angular';
 
 @Injectable()
 @Component({
@@ -23,7 +24,7 @@ export class ListPage implements OnInit {
         'bluetooth',
         'build'
     ];
-    public items: Array<{ title: string; note: string; icon: string }> = [];
+    public items: Array<{ addressTitle: string; city: string; rent: string; note: string; icon: string }> = [];
 
     constructor(public http: HttpClient) {
         this.load();
@@ -44,9 +45,12 @@ export class ListPage implements OnInit {
         console.log(data);
         for (let i = 0; i < data.length; i++) {
             this.items.push({
-                title: 'Item ' + data[i].id + ' ' + data[i].country,
-                note: 'This is item #' + i,
-                icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+                addressTitle: data[i].address,
+                // to be changed to city
+                city: data[i]. city,
+                rent: data[i].rent,
+                note: 'Wohnung #' + (i + 1),
+                icon: 'home',
             });
         }
     }
@@ -56,5 +60,19 @@ export class ListPage implements OnInit {
     //   this.router.navigate(['/list', JSON.stringify(item)]);
     // }
     ngOnInit() {
+    }
+
+    favorite(item: { addressTitle: string; city: string; rent: string; note: string; icon: string }) {
+    }
+
+    dropFromList(item) {
+
+        for (let j = 0; j < this.items.length; j++) {
+
+            if (this.items[j] === item) {
+                this.items.splice(j, 1);
+            }
+
+        }
     }
 }
