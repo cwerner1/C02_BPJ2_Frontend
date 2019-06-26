@@ -56,7 +56,7 @@ export class ListPage implements OnInit {
     ngOnInit() {
     }
 
-    favorite(item: { addressTitle: string; city: string; rent: string; note: string; icon: string }) {
+    favorite(item: { id: string; address: string; city: string; rent: string; note: string; icon: string; description: string }) {
     }
 
     dropFromList(item) {

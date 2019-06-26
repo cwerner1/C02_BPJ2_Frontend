@@ -9,39 +9,26 @@
 
 <ion-content>
   <ion-grid>
-    <ion-row>
+    <form  #form="ngForm" (ngSubmit)="returnDurchschnitt(form)">
+      <ion-row justify-content-center>
       <ion-col>
-        <ion-searchbar placeholder="Postleitzahl"></ion-searchbar>
+        <!-- Input with placeholder -->
+        <ion-input ngModel name="Stadt" placeholder="Enter City" required="true"></ion-input>
       </ion-col>
+      <ion-col><ion-button size="small" color="light" [disabled]="form.invalid" type="submit">Show Results</ion-button></ion-col>
     </ion-row>
+    </form>
     <ion-row>
       <ion-col>
         <ion-card>
           <ion-card-header>
-            <ion-card-title><img class="headerLogo" src="\assets\flattery_logo.png">Postleitzahl</ion-card-title>
+            <ion-card-title><img class="headerLogo" src="\assets\flattery_logo.png">Durchschnittspreis</ion-card-title>
           </ion-card-header>
 
           <ion-card-content>
             <ul>
-              <li>Durchschnittliche Gesamtbelastung: 550 Euro</li>
-              <li>Kosten pro m2: 5 Euro</li>
-            </ul>
-          </ion-card-content>
-        </ion-card>
-
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title><img class="headerLogo" src="\assets\flattery_logo.png">Land</ion-card-title>
-          </ion-card-header>
-
-          <ion-card-content>
-            <ul>
-              <li>Durchschnittliche Gesamtbelastung: 550 Euro</li>
-              <li>Kosten pro m2: 5 Euro</li>
+              <li>Gesamtbelastung: 550 Euro</li>
+              <li>Pro m2: 5 Euro</li>
             </ul>
           </ion-card-content>
         </ion-card>
