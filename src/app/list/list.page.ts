@@ -24,7 +24,8 @@ export class ListPage implements OnInit {
         'bluetooth',
         'build'
     ];
-    public items: Array<{ id: string; address: string; city: string; rent: string; note: string; icon: string; description: string }> = [];
+    public items: Array<{ id: string; address: string; city: string;
+    postalCode: string; rent: string; note: string; icon: string; description: string; surfaceArea: string }> = [];
 
     constructor(public http: HttpClient) {
         this.load();
@@ -56,7 +57,8 @@ export class ListPage implements OnInit {
     ngOnInit() {
     }
 
-    favorite(item: { id: string; address: string; city: string; rent: string; note: string; icon: string; description: string }) {
+    favorite(item: { id: string; address: string; city: string; postalCode: string;
+    rent: string; note: string; icon: string; description: string; surfaceArea: string; roomCount: string }) {
     }
 
     dropFromList(item) {
