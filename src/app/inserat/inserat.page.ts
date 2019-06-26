@@ -17,18 +17,16 @@ export class InseratPage implements OnInit {
     }
 
     ngOnInit() {
-        this.uploadForm = this.formBuilder.group({
-            profile: ['']
-        });
+        this.uploadForm = this.formBuilder.group({});
     }
 
-    sendPostRequest() {
+    sendPostRequest(form: any) {
         const headers = new HttpHeaders();
         headers.append('Accept', 'application/json');
         headers.append('Content-Type', 'application/json');
 
 
-        this.http.post('http://127.0.0.1:8080/wohnung/add', this.uploadForm.value, {headers})
+        this.http.post('http://127.0.0.1:8080/wohnung/add', form.value, {headers})
             .subscribe(data => {
                 const jsonData: any = data;
                 console.log(jsonData);

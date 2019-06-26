@@ -11,10 +11,10 @@
 
 <ion-content>
     <ion-item-sliding #itemSliding *ngFor="let item of items">
-        <ion-item href="/wohnung">
+      <ion-item href="/wohnung/{{item.id}}">
             <ion-icon [name]="item.icon" slot="start"></ion-icon>
           <ion-label>
-          <h2>{{item.addressTitle}}</h2>
+            <h2>{{item.address}}</h2>
             <p>Stadt: {{item.city}}</p>
             <p>Miete: {{item.rent}}&euro;</p>
           </ion-label>

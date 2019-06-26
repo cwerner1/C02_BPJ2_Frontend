@@ -10,26 +10,27 @@
 </ion-header>
 
 <ion-content>
-    <form [formGroup]="uploadForm">aaa
+    <form #form="ngForm" (ngSubmit)="sendPostRequest(form)">
         <!-- Inputs with labels -->
         <ion-item>
             <ion-label position="floating"><p>Adresse</p></ion-label>
-            <ion-input name="description" clearInput required="true" placeholder="Beschreibung der Wohnung"></ion-input>
-            <ion-input name="street" clearInput required="true" placeholder="Straße"></ion-input>
-            <ion-input name="postalCode" clearInput required="true" placeholder="Postleitzahl"></ion-input>
-            <ion-input name="city" placeholder="Stadt"></ion-input>
-            <ion-input name="country" clearInput required="true" placeholder="Land"></ion-input>
+            <ion-input clearInput name="description" ngModel placeholder="Beschreibung der Wohnung"
+                       required="true"></ion-input>
+            <ion-input clearInput name="address" ngModel placeholder="Straße" required="true"></ion-input>
+            <ion-input clearInput name="postalCode" ngModel placeholder="Postleitzahl" required="true"></ion-input>
+            <ion-input name="city" ngModel placeholder="Stadt"></ion-input>
+            <ion-input clearInput name="country" ngModel placeholder="Land" required="true"></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label position="floating"><p>Details </p></ion-label>
-            <ion-input name="rent" clearInput required="true" placeholder="Gesamtmiete"></ion-input>
-            <ion-input name="surfaceArea" clearInput required="true" placeholder="m2"></ion-input>
-            <ion-input name="roomCount" clearInput required="true" placeholder="Raumanzahl"></ion-input>
+            <ion-input clearInput name="rent" ngModel placeholder="Gesamtmiete" required="true"></ion-input>
+            <ion-input clearInput name="surfaceArea" ngModel placeholder="m2" required="true"></ion-input>
+            <ion-input clearInput name="roomCount" ngModel placeholder="Raumanzahl" required="true"></ion-input>
         </ion-item>
 
 
-        <ion-button (click)="sendPostRequest()" class="inseratButton" color="success" expand="full">
+        <ion-button [disabled]="form.invalid" class="inseratButton" color="success" expand="full" type="submit">
             Inseriere Wohnung
         </ion-button>
 
