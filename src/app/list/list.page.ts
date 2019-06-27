@@ -3,23 +3,9 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {IonItemSliding} from '@ionic/angular';
+import {WohnungService} from '../services/wohnung.service';
+import {Wohnung} from '../class/wohnung';
 
-class IWohnung {
-    id: string;
-    icon: string;
-
-    rent: number;
-    roomCount;
-    number;
-    user_id: number;
-    addedAt: number;
-    address: string;
-    city: string;
-    country: string;
-    description: string;
-    surfaceArea: number;
-    postalCode: string;
-}
 
 @Injectable()
 @Component({
@@ -29,7 +15,6 @@ class IWohnung {
 })
 
 export class ListPage implements OnInit {
-    private selectedItem: any;
     private icons = [
         'flask',
         'wifi',
@@ -42,29 +27,17 @@ export class ListPage implements OnInit {
         'bluetooth',
         'build'
     ];
+    public items: Wohnung[] = [];
 
-    public items: IWohnung[] = [];
-
-    constructor(public http: HttpClient) {
-        this.load();
-    }
-
-    load() {
-        const apiendpoint = 'http://127.0.0.1:8080/wohnung/all';
-
-        return this.http.get(apiendpoint).subscribe(data => {
-            this.buildList(data);
-        });
-
+    constructor(public wohnungService: WohnungService) {
+        this.wohnungService.listAll().subscribe(data => this.buildList(data));
 
     }
+
 
     buildList(data) {
-        console.log(data);
-        for (let i = 0; i < data.length; i++) {
-            data[i].icon = 'home';
-            this.items.push(data[i]);
-        }
+        this.items = data;
+
     }
 
     // add back when alpha.4 is out
