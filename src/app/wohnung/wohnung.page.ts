@@ -11,34 +11,20 @@ import {FormBuilder, FormGroup} from '@angular/forms';
     styleUrls: ['./wohnung.page.scss'],
 })
 export class WohnungPage implements OnInit {
-    wohnung: any;
+    wohnung = null;
 
     constructor(public http: HttpClient, private route: ActivatedRoute) {
 
     }
 
     ngOnInit() {
-    }
-
-    ionViewWillEnter() {
         const id = this.route.snapshot.paramMap.get('id');
-        this.wohnung = null;
-        this.load(id);
-    }
-
-    load(id) {
         const apiendpoint = 'http://127.0.0.1:8080/wohnung/get/' + id;
 
-        return this.http.get(apiendpoint).subscribe(data => {
-            this.drawpage(data);
+        this.http.get(apiendpoint).subscribe(data => {
+            this.wohnung = data;
         });
-
-
     }
 
-    drawpage(data) {
-        console.log(data);
-        this.wohnung = data;
-    }
 
 }
