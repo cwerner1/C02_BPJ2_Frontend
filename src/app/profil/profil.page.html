@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content overflow-scroll="false">>
   <div id="profile-bg"></div>
   <div id="content">
     <div id="profile-info">
@@ -19,18 +19,20 @@
       <h5><i class="ion ion-calendar"></i> 23-08-1990</h5>
       <h5><i></i>Adresse</h5>
     </div>
+
     <div class="PostedFlats">
+
       <ion-list>
         <ion-item *ngFor="let item of items">
           <ion-icon [name]="item.icon" slot="start"></ion-icon>
-          {{item.title}}
+            {{item.description}}
           <div class="item-note" slot="end">
-            <ion-button color="success" fill="outline">
-              {{item.noteOne}}
+              <ion-button [routerLink]="['/wohnung/edit/', item.id]" color="success" fill="outline">
+                  {{item.address}}
               <ion-icon slot="end" name="build"></ion-icon>
             </ion-button>
-            <ion-button color="danger" fill="outline">
-              {{item.noteTwo}}
+              <ion-button color="danger" fill="outline">
+                  {{item.id}}
               <ion-icon slot="end" name="trash"></ion-icon>
             </ion-button>
           </div>

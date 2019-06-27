@@ -31,13 +31,11 @@ export class ListPage implements OnInit {
 
     constructor(public wohnungService: WohnungService) {
         this.wohnungService.listAll().subscribe(data => this.buildList(data));
-
     }
 
 
     buildList(data) {
         this.items = data;
-
     }
 
     // add back when alpha.4 is out

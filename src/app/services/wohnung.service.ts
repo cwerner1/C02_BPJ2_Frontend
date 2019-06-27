@@ -26,7 +26,7 @@ export class WohnungService {
     }
 
     listAll(): Observable<any> {
-        const apiendpoint = '/all';
+        const apiendpoint = 'all';
         if (this.wohnungen != null) {
             return this.wohnungen;
         }
@@ -38,7 +38,7 @@ export class WohnungService {
 
 
     getDetails(id): Observable<any> {
-        const apiendpoint = '/get/' + id;
+        const apiendpoint = 'get/' + id;
 
         if (this.data[id] != null) {
             return this.data[id];
@@ -55,7 +55,7 @@ export class WohnungService {
     }
 
     addInserat(form): void {
-        const apiendpoint = '/add';
+        const apiendpoint = 'add';
         const headers = new HttpHeaders();
         headers.append('Accept', 'application/json');
         headers.append('Content-Type', 'application/json');
@@ -70,5 +70,31 @@ export class WohnungService {
             }, error => {
                 console.error(error);
             });
+    }
+
+    updateInserat(form): void {
+        const apiendpoint = 'update';
+        const headers = new HttpHeaders();
+        headers.append('Accept', 'application/json');
+        headers.append('Content-Type', 'application/json');
+
+        this.http.post(`${this.url}${apiendpoint}`, form.value, {headers})
+            .subscribe(data => {
+                const jsonData = data as IWohnungCreated;
+
+                this.clearCache();
+                this.router.navigate(['/profile', jsonData.wohnung_id]);
+
+            }, error => {
+                console.error(error);
+            });
+    }
+
+    listAllByUserID(userId): Observable<any> {
+        const apiendpoint = 'getByUserID/' + userId;
+        
+        let result = this.http
+            .get(`${this.url}${apiendpoint}`);
+        return result;
     }
 }

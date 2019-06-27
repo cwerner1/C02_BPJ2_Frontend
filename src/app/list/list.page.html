@@ -9,7 +9,7 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content overflow-scroll="false">
     <ion-item-sliding #itemSliding *ngFor="let item of items">
         <ion-item [routerLink]="['/wohnung/', item.id]">
             <ion-icon [name]="item.icon" slot="start"></ion-icon>

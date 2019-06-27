@@ -14,7 +14,7 @@
         <!-- Inputs with labels -->
         <ion-item>
             <ion-label position="floating"><p>Adresse</p></ion-label>
-            <ion-input [(ngModel)]="wohnung.description" clearInput
+            <ion-input [(ngModel)]="ctrl.wohnung.description" clearInput
                        name="description"
                        placeholder="Beschreibung der Wohnung" required="true"></ion-input>
             <ion-input [(ngModel)]="ctrl.wohnung.address" clearInput name="address"
@@ -36,12 +36,16 @@
             <ion-input [(ngModel)]="ctrl.wohnung.roomCount" clearInput name="roomCount"
                        placeholder="Raumanzahl" required="true"></ion-input>
         </ion-item>
-
-
+        <div *ngIf="!edit">
         <ion-button [disabled]="form.invalid" class="inseratButton" color="success" expand="full" type="submit">
             Inseriere Wohnung
         </ion-button>
-
+        </div>
+        <div *ngIf="edit">
+            <ion-button [disabled]="form.invalid" class="inseratButton" color="success" expand="full" type="submit">
+                Wohnung Speichern
+            </ion-button>
+        </div>
     </form>
 </ion-content>
 

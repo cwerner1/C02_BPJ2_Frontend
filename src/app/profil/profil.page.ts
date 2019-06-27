@@ -1,40 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Wohnung} from '../class/wohnung';
+import {WohnungService} from '../services/wohnung.service';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: 'profil.page.html',
-  styleUrls: ['profil.page.scss']
+    selector: 'app-list',
+    templateUrl: 'profil.page.html',
+    styleUrls: ['profil.page.scss']
 })
 export class ProfilPage implements OnInit {
-  private selectedItem: any;
-  private icons = [
-    'flask',
-    'wifi',
-    'beer',
-    'football',
-    'basketball',
-    'paper-plane',
-    'american-football',
-    'boat',
-    'bluetooth',
-    'build'
-  ];
-  public items: Array<{ title: string; noteOne: string; noteTwo: string; icon: string }> = [];
-  constructor() {
-    for (let i = 1; i < 4; i++) {
-      this.items.push({
-        title: 'Flat ' + i,
-        noteOne: 'Edit',
-        noteTwo: 'Delete',
-        icon: 'home',
-      });
-    }
-  }
 
-  ngOnInit() {
-  }
-  // add back when alpha.4 is out
-  // navigate(item) {
-  //   this.router.navigate(['/list', JSON.stringify(item)]);
-  // }
+    public items: Wohnung[] = [];
+
+    constructor(public wohnungService: WohnungService) {
+        const id = 1;
+        this.wohnungService.listAllByUserID(id).subscribe(data => this.buildList(data));
+    }
+
+
+    buildList(data) {
+        this.items = data;
+    }
+
+    ngOnInit() {
+    }
+
+
 }
