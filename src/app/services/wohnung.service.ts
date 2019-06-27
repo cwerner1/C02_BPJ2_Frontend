@@ -83,7 +83,7 @@ export class WohnungService {
                 const jsonData = data as IWohnungCreated;
 
                 this.clearCache();
-                this.router.navigate(['/profile', jsonData.wohnung_id]);
+                this.router.navigate(['/profil']);
 
             }, error => {
                 console.error(error);
@@ -92,7 +92,7 @@ export class WohnungService {
 
     listAllByUserID(userId): Observable<any> {
         const apiendpoint = 'getByUserID/' + userId;
-        
+
         let result = this.http
             .get(`${this.url}${apiendpoint}`);
         return result;
