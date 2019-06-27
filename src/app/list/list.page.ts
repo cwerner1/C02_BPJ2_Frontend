@@ -4,12 +4,30 @@ import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {IonItemSliding} from '@ionic/angular';
 
+class IWohnung {
+    id: string;
+    icon: string;
+
+    rent: number;
+    roomCount;
+    number;
+    user_id: number;
+    addedAt: number;
+    address: string;
+    city: string;
+    country: string;
+    description: string;
+    surfaceArea: number;
+    postalCode: string;
+}
+
 @Injectable()
 @Component({
     selector: 'app-list',
     templateUrl: 'list.page.html',
     styleUrls: ['list.page.scss']
 })
+
 export class ListPage implements OnInit {
     private selectedItem: any;
     private icons = [
@@ -24,12 +42,11 @@ export class ListPage implements OnInit {
         'bluetooth',
         'build'
     ];
-    public items: Array<{ id: string; address: string; city: string;
-    postalCode: string; rent: string; note: string; icon: string; description: string; surfaceArea: string }> = [];
+
+    public items: IWohnung[] = [];
 
     constructor(public http: HttpClient) {
         this.load();
-
     }
 
     load() {
@@ -57,8 +74,10 @@ export class ListPage implements OnInit {
     ngOnInit() {
     }
 
-    favorite(item: { id: string; address: string; city: string; postalCode: string;
-    rent: string; note: string; icon: string; description: string; surfaceArea: string; roomCount: string }) {
+    favorite(item: {
+        id: string; address: string; city: string; postalCode: string;
+        rent: string; note: string; icon: string; description: string; surfaceArea: string; roomCount: string
+    }) {
     }
 
     dropFromList(item) {
