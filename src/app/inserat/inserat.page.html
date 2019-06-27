@@ -14,19 +14,27 @@
         <!-- Inputs with labels -->
         <ion-item>
             <ion-label position="floating"><p>Adresse</p></ion-label>
-            <ion-input clearInput name="description" ngModel placeholder="Beschreibung der Wohnung"
+            <ion-input [(ngModel)]="wohnung.description" clearInput
+                       name="description"
+                       placeholder="Beschreibung der Wohnung" required="true"></ion-input>
+            <ion-input [(ngModel)]="ctrl.wohnung.address" clearInput name="address"
+                       placeholder="Straße" required="true"></ion-input>
+            <ion-input [(ngModel)]="ctrl.wohnung.postalCode" clearInput name="postalCode"
+                       placeholder="Postleitzahl" required="true"></ion-input>
+            <ion-input [(ngModel)]="ctrl.wohnung.city" clearInput name="city" placeholder="Stadt"
                        required="true"></ion-input>
-            <ion-input clearInput name="address" ngModel placeholder="Straße" required="true"></ion-input>
-            <ion-input clearInput name="postalCode" ngModel placeholder="Postleitzahl" required="true"></ion-input>
-            <ion-input name="city" ngModel placeholder="Stadt"></ion-input>
-            <ion-input clearInput name="country" ngModel placeholder="Land" required="true"></ion-input>
+            <ion-input [(ngModel)]="ctrl.wohnung.country" clearInput name="country"
+                       placeholder="Land" required="true"></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label position="floating"><p>Details </p></ion-label>
-            <ion-input clearInput name="rent" ngModel placeholder="Gesamtmiete" required="true"></ion-input>
-            <ion-input clearInput name="surfaceArea" ngModel placeholder="m2" required="true"></ion-input>
-            <ion-input clearInput name="roomCount" ngModel placeholder="Raumanzahl" required="true"></ion-input>
+            <ion-input [(ngModel)]="ctrl.wohnung.rent" clearInput name="rent"
+                       placeholder="Gesamtmiete" required="true"></ion-input>
+            <ion-input [(ngModel)]="ctrl.wohnung.surfaceArea" clearInput name="surfaceArea"
+                       placeholder="m2" required="true"></ion-input>
+            <ion-input [(ngModel)]="ctrl.wohnung.roomCount" clearInput name="roomCount"
+                       placeholder="Raumanzahl" required="true"></ion-input>
         </ion-item>
 
 

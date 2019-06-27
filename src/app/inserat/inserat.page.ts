@@ -15,8 +15,11 @@ interface IWohnungCreated {
 })
 
 export class InseratPage implements OnInit {
+    public wohnung: any = {};
+    private ctrl = this;
 
     constructor(private formBuilder: FormBuilder, private router: Router, public http: HttpClient) {
+
     }
 
     ngOnInit() {
