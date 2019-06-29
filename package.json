@@ -1,15 +1,23 @@
 {
-  "name": "myApp",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
+  "name": "flattery",
+  "version": "0.1.1",
+  "author": "IWI17 - Gruppe 3 Flattery",
   "homepage": "https://ionicframework.com/",
+  "description": "Flattery",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "ng": "ionic",
+    "start": "ionic serve",
+    "test": "ionic test",
+    "lint": "ionic lint",
+    "e2e": "ionic e2e",
+    "build": "ionic build",
+    "watch": "ionic watch",
+    "serve:before": "watch",
+    "emulate:before": "watch",
+    "deploy:before": "build",
+    "build:before": "build",
+    "run:before": "watch",
+    "serve": "start"
   },
   "private": true,
   "dependencies": {
@@ -58,6 +66,5 @@
     "ts-node": "^8.3.0",
     "tslint": "~5.16.0",
     "typescript": "~3.1.6"
-  },
-  "description": "An Ionic project"
+  }
 }
