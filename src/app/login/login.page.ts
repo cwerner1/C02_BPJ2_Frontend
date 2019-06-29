@@ -10,9 +10,14 @@ import {AuthService} from '../services/auth.service';
 export class LoginPage implements OnInit {
 
     constructor(public menuCtrl: MenuController, public authService: AuthService) {
+
+        if (this.authService.isLoggedIn()) {
+            this.router.navigate(['/home']);
+        }
     }
 
     ngOnInit() {
+
 
     }
 

@@ -11,6 +11,9 @@ import {User} from '../auth/user';
 export class RegisterPage implements OnInit {
 
     constructor(public menuCtrl: MenuController, public authService: AuthService) {
+        if (this.authService.isLoggedIn()) {
+            this.router.navigate(['/home']);
+        }
     }
 
     ionViewCanEnter() {
@@ -18,6 +21,8 @@ export class RegisterPage implements OnInit {
     }
 
     ngOnInit() {
+
+
     }
 
     ionViewWillEnter() {

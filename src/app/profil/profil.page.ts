@@ -13,18 +13,17 @@ export class ProfilPage implements OnInit {
     public items: Wohnung[] = [];
 
     constructor(public wohnungService: WohnungService, public authService: AuthService) {
-        const id = authService.getUserID();
-        console.log('ID ', id);
-        console.error('@Todo Set user id in Profile Page');
-        this.wohnungService.listAllByUserID(id).subscribe(data => {
-            this.items = data;
+        authService.getUserID().then(id => {
+            console.error('@Todo Set user id in Profile Page');
+            console.log('ID ', id);
+            this.wohnungService.listAllByUserID(id).subscribe(data => {
+                this.items = data;
+            });
         });
     }
 
-
     ionViewCanEnter() {
-        return true;
-        // return this.authService.authenticated();
+        return this.authService.authenticated();
     }
 
     ngOnInit() {
