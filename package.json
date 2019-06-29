@@ -27,6 +27,7 @@
     "@ionic/pro": "2.0.4",
     "@ionic/storage": "^2.2.0",
     "core-js": "^2.6.9",
+    "ionic": "^5.2.1",
     "rxjs": "~6.5.1",
     "rxjs-compat": "^6.5.2",
     "tar": "^4.4.10",

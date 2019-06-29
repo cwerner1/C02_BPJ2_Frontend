@@ -97,4 +97,17 @@ export class WohnungService {
             .get(`${this.url}${apiendpoint}`);
         return result;
     }
+
+    getAverage(city): Observable<any> {
+        const apiendpoint = 'average';
+        const headers = new HttpHeaders();
+        headers.append('Accept', 'application/json');
+        headers.append('Content-Type', 'application/json');
+
+        let data = this.http.post(`${this.url}${apiendpoint}`, city.value, {headers});
+        const jsonData = data;
+        console.log(data);
+        return jsonData.data.average;
+
+    }
 }

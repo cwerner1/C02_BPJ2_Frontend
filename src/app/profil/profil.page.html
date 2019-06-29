@@ -21,23 +21,24 @@
     </div>
 
     <div class="PostedFlats">
-
+      <ion-infinite-scroll-content>
       <ion-list>
         <ion-item *ngFor="let item of items">
-          <ion-icon [name]="item.icon" slot="start"></ion-icon>
+          <ion-icon [name]="'contact'" slot="start"></ion-icon>
             {{item.description}}
           <div class="item-note" slot="end">
               <ion-button [routerLink]="['/wohnung/edit/', item.id]" color="success" fill="outline">
-                  {{item.address}}
+                  Edit
               <ion-icon slot="end" name="build"></ion-icon>
             </ion-button>
               <ion-button color="danger" fill="outline">
-                  {{item.id}}
+                  Delete
               <ion-icon slot="end" name="trash"></ion-icon>
             </ion-button>
           </div>
         </ion-item>
       </ion-list>
+      </ion-infinite-scroll-content>
     </div>
   </div>
 </ion-content>

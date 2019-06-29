@@ -29,11 +29,11 @@
 
         <ion-item>
             <ion-label position="floating"><p>Details </p></ion-label>
-            <ion-input [(ngModel)]="ctrl.wohnung.rent" clearInput name="rent"
+            <ion-input type="number" [(ngModel)]="ctrl.wohnung.rent" clearInput name="rent"
                        placeholder="Gesamtmiete" required="true"></ion-input>
-            <ion-input [(ngModel)]="ctrl.wohnung.surfaceArea" clearInput name="surfaceArea"
+            <ion-input type="number" [(ngModel)]="ctrl.wohnung.surfaceArea" clearInput name="surfaceArea"
                        placeholder="m2" required="true"></ion-input>
-            <ion-input [(ngModel)]="ctrl.wohnung.roomCount" clearInput name="roomCount"
+            <ion-input type="number" [(ngModel)]="ctrl.wohnung.roomCount" clearInput name="roomCount"
                        placeholder="Raumanzahl" required="true"></ion-input>
         </ion-item>
         <div *ngIf="!edit">

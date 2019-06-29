@@ -1,37 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {WohnungService} from '../services/wohnung.service';
 
 @Component({
-  selector: 'app-preisvergleich',
-  templateUrl: './preisvergleich.page.html',
-  styleUrls: ['./preisvergleich.page.scss'],
+    selector: 'app-preisvergleich',
+    templateUrl: './preisvergleich.page.html',
+    styleUrls: ['./preisvergleich.page.scss'],
 })
 export class PreisvergleichPage implements OnInit {
-    inputValue: any;
+    average: any;
+    averageSqM: any;
+    city: any;
 
-  constructor(public http: HttpClient) { }
+    constructor(public wohnungService: WohnungService) {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  returnDurchschnitt(inputValue: any) {
-    console.log(inputValue);
-  }
-
-  sendPostRequest(form: any) {
-    const headers = new HttpHeaders();
-    headers.append('Accept', 'application/json');
-    headers.append('Content-Type', 'application/json');
-
-
-    this.http.post('http://127.0.0.1:8080/wohnung/add', form.value, {headers})
-        .subscribe(data => {
-          const jsonData: any = data;
-          console.log(jsonData);
-
-        }, error => {
-          console.error(error);
+    returnDurchschnitt(inputValue: any) {
+        console.log(inputValue);
+        this.wohnungService.getAverage(inputValue).subscribe(data => {
+            console.log(data);
+            this.average = data.average;
+            this.averageSqM = data.averageSqm;
         });
-  }
+    }
 
 }

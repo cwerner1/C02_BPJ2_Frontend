@@ -13,22 +13,22 @@
       <ion-row justify-content-center>
       <ion-col>
         <!-- Input with placeholder -->
-        <ion-input ngModel name="Stadt" placeholder="Enter City" required="true"></ion-input>
+        <ion-input [(ngModel)] = "city" name="Stadt" placeholder="Enter City" required="true"></ion-input>
       </ion-col>
       <ion-col><ion-button size="small" color="light" [disabled]="form.invalid" type="submit">Show Results</ion-button></ion-col>
     </ion-row>
     </form>
     <ion-row>
       <ion-col>
-        <ion-card>
+        <ion-card *ngIf="average">
           <ion-card-header>
-            <ion-card-title><img class="headerLogo" src="\assets\flattery_logo.png">Durchschnittspreis</ion-card-title>
+            <ion-card-title><img class="headerLogo" src="\assets\flattery_logo.png">{{city}}</ion-card-title>
           </ion-card-header>
 
           <ion-card-content>
             <ul>
-              <li>Gesamtbelastung: 550 Euro</li>
-              <li>Pro m2: 5 Euro</li>
+              <li>Gesamtbelastung: {{average}} Euro</li>
+              <li>Pro m2: {{averageSqM}} Euro</li>
             </ul>
           </ion-card-content>
         </ion-card>
