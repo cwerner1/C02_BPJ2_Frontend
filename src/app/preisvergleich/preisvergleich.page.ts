@@ -19,7 +19,7 @@ export class PreisvergleichPage implements OnInit {
 
     returnDurchschnitt(inputValue: any) {
         console.log(inputValue);
-        this.wohnungService.getAverage(inputValue).subscribe(data => {
+        this.wohnungService.getAverage(inputValue.value.Stadt).subscribe(data => {
             console.log(data);
             this.average = data.average;
             this.averageSqM = data.averageSqm;

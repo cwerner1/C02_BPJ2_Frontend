@@ -104,7 +104,11 @@ export class WohnungService {
         headers.append('Accept', 'application/json');
         headers.append('Content-Type', 'application/json');
 
-        let data = this.http.post(`${this.url}${apiendpoint}`, city.value, {headers});
+        let data = this.http.post(`${this.url}${apiendpoint}`, "{\"city\":" + city + "}", {headers})
+            .subscribe(data => {
+                console.log(data);
+                return data;
+            });
         const jsonData = data;
         console.log(data);
         return jsonData.data.average;
