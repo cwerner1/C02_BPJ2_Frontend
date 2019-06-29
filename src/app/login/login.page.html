@@ -22,11 +22,12 @@
         </div>
 
         <div padding>
-          <ion-button size="large" href="/home" expand="block">Login</ion-button>
+          <ion-button size="large" href="/home" expand="block" type="submit">Login</ion-button>
         </div>
-        <div text-center>
-          <p>If you don't have an account yet, please <a href="/register">register</a> here!</p>
-        </div>
+        <ion-button [routerLink]="['/register/']">
+        <div text-center >
+          <p>If you don't have an account yet, please  register here!</p>
+        </div></ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

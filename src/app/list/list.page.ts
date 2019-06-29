@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import {IonItemSliding} from '@ionic/angular';
 import {WohnungService} from '../services/wohnung.service';
 import {Wohnung} from '../class/wohnung';
+import {AuthService} from '../services/auth.service';
 
 
 @Injectable()
@@ -29,13 +30,14 @@ export class ListPage implements OnInit {
     ];
     public items: Wohnung[] = [];
 
-    constructor(public wohnungService: WohnungService) {
-        this.wohnungService.listAll().subscribe(data => this.buildList(data));
+    constructor(public wohnungService: WohnungService, public authService: AuthService) {
+        this.wohnungService.listAll().subscribe(data => {
+            this.items = data;
+        });
     }
 
-
-    buildList(data) {
-        this.items = data;
+    ionViewCanEnter() {
+        return this.authService.authenticated();
     }
 
     // add back when alpha.4 is out

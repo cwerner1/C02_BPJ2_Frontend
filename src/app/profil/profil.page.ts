@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Wohnung} from '../class/wohnung';
 import {WohnungService} from '../services/wohnung.service';
+import {AuthService} from '../services/auth.service';
 
 @Component({
     selector: 'app-list',
@@ -11,14 +12,19 @@ export class ProfilPage implements OnInit {
 
     public items: Wohnung[] = [];
 
-    constructor(public wohnungService: WohnungService) {
-        const id = 1;
-        this.wohnungService.listAllByUserID(id).subscribe(data => this.buildList(data));
+    constructor(public wohnungService: WohnungService, public authService: AuthService) {
+        const id = authService.getUserID();
+        console.log('ID ', id);
+        console.error('@Todo Set user id in Profile Page');
+        this.wohnungService.listAllByUserID(id).subscribe(data => {
+            this.items = data;
+        });
     }
 
 
-    buildList(data) {
-        this.items = data;
+    ionViewCanEnter() {
+        return true;
+        // return this.authService.authenticated();
     }
 
     ngOnInit() {

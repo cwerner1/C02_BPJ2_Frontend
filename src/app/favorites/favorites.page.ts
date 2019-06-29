@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-favorites',
@@ -9,8 +10,11 @@ import {HttpClient} from '@angular/common/http';
 export class FavoritesPage implements OnInit {
 
   public items: Array<{ addressTitle: string; note: string; icon: string }> = [];
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, public authService: AuthService) {
     this.load();
+  }
+  ionViewCanEnter() {
+    return this.authService.authenticated();
   }
 
   load() {

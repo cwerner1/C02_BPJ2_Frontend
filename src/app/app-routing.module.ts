@@ -2,14 +2,13 @@ import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
-import {WohnungPage} from './wohnung/wohnung.page';
 
 
 const routes: Routes = [
     {
         path: '',
         // change to 'home' for start there
-        redirectTo: 'home',
+        redirectTo: 'login',
         pathMatch: 'full'
     },
     {path: 'home', loadChildren: './home/home.module#HomePageModule'},
@@ -26,13 +25,14 @@ const routes: Routes = [
     {path: 'wohnung/edit/:id', loadChildren: './inserat/inserat.module#InseratPageModule'},
 
 
+
 ];
 
 @NgModule({
     imports: [
         BrowserModule,
         HttpClientModule,
-        RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})
+        RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules}),
     ],
     exports: [RouterModule]
 })

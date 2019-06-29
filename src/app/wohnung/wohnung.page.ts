@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {WohnungService} from '../services/wohnung.service';
 import {Wohnung} from '../class/wohnung';
+import {AuthService} from '../services/auth.service';
 
 @Component({
     selector: 'app-wohnung',
@@ -15,8 +16,12 @@ import {Wohnung} from '../class/wohnung';
 export class WohnungPage implements OnInit {
     private wohnung = null;
 
-    constructor(public wohnungService: WohnungService, private route: ActivatedRoute) {
+    constructor(public wohnungService: WohnungService, private route: ActivatedRoute, public authService: AuthService) {
         this.wohnung = null;
+    }
+
+    ionViewCanEnter() {
+        return this.authService.authenticated();
     }
 
     ngOnInit() {
