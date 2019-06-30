@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MenuController} from '@ionic/angular';
 import {AuthService} from '../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -9,7 +10,7 @@ import {AuthService} from '../services/auth.service';
 })
 export class LoginPage implements OnInit {
 
-    constructor(public menuCtrl: MenuController, public authService: AuthService) {
+    constructor(public menuCtrl: MenuController, public authService: AuthService, private router: Router) {
 
         if (this.authService.isLoggedIn()) {
             this.router.navigate(['/home']);

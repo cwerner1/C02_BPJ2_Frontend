@@ -6,6 +6,7 @@ import {IonItemSliding} from '@ionic/angular';
 import {WohnungService} from '../services/wohnung.service';
 import {Wohnung} from '../class/wohnung';
 import {AuthService} from '../services/auth.service';
+import {JsonResponse} from '../class/json-response';
 
 
 @Injectable()
@@ -54,7 +55,7 @@ export class ListPage implements OnInit {
     }
 
     dropFromList(item) {
-
+// @TODO Remove Favorites from list
         for (let j = 0; j < this.items.length; j++) {
 
             if (this.items[j] === item) {

@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../services/auth.service';
 import {MenuController} from '@ionic/angular';
 

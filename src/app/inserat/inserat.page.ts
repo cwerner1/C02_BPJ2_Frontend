@@ -18,6 +18,7 @@ export class InseratPage implements OnInit {
     public wohnung: any = {};
     private ctrl = this;
     public edit = false;
+    private userID = null;
 
     constructor(public wohnungService: WohnungService, private route: ActivatedRoute, public authService: AuthService) {
         const id = this.route.snapshot.paramMap.get('id');
@@ -27,6 +28,9 @@ export class InseratPage implements OnInit {
                 this.edit = true;
             });
         }
+        this.authService.getUserID().then((userId) => {
+            this.userID = userId;
+        });
     }
 
     ionViewCanEnter() {
@@ -39,7 +43,10 @@ export class InseratPage implements OnInit {
 
     sendPostRequest(form: any) {
         if (this.edit === false) {
+            form.value.userId = this.userID;
             this.wohnungService.addInserat(form);
+
+
         } else {
             this.wohnungService.updateInserat(form);
         }

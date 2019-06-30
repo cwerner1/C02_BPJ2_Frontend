@@ -14,7 +14,7 @@ import {AuthService} from '../services/auth.service';
     styleUrls: ['./wohnung.page.scss'],
 })
 export class WohnungPage implements OnInit {
-    private wohnung = null;
+    private wohnung: Wohnung = null;
 
     constructor(public wohnungService: WohnungService, private route: ActivatedRoute, public authService: AuthService) {
         this.wohnung = null;
