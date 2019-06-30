@@ -32,6 +32,7 @@ export class InseratPage implements OnInit {
         this.authService.getUserID().then((userId) => {
             this.userID = userId;
         });
+        this.wohnung = {};
     }
 
     ionViewCanEnter() {

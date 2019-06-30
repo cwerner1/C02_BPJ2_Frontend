@@ -124,4 +124,16 @@ export class WohnungService {
         const datas = this.http.post(`${this.url}${apiendpoint}`, {city}, {headers});
         return datas;
     }
+
+    removeWohnung(id: string) {
+        const apiendpoint = 'remove';
+
+
+        const wohnungID = Number(id);
+        const headers = new HttpHeaders();
+        headers.append('Accept', 'application/json');
+        headers.append('Content-Type', 'application/json');
+
+        return this.http.post(`${this.url}${apiendpoint}`, {wohnungID}, {headers});
+    }
 }
