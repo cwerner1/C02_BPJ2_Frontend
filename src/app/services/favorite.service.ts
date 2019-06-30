@@ -93,5 +93,5 @@ export class FavoriteService {
             }, error => {
                 console.error(error);
             });
-    };
+    }
 }

@@ -1,40 +1,44 @@
 <ion-header class="ion-hide-lg-up">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Flattery Preisvergleich</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Flattery Preisvergleich</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <form  #form="ngForm" (ngSubmit)="returnDurchschnitt(form)">
-      <ion-row justify-content-center>
-      <ion-col>
-        <!-- Input with placeholder -->
-        <ion-input [(ngModel)] = "city" name="Stadt" placeholder="Enter City" required="true"></ion-input>
-      </ion-col>
-      <ion-col><ion-button size="small" color="light" [disabled]="form.invalid" type="submit">Show Results</ion-button></ion-col>
-    </ion-row>
-    </form>
-    <ion-row>
-      <ion-col>
-        <ion-card *ngIf="average">
-          <ion-card-header>
-            <ion-card-title><img class="headerLogo" src="\assets\flattery_logo.png">{{city}}</ion-card-title>
-          </ion-card-header>
+    <ion-grid>
+        <form #form="ngForm" (ngSubmit)="returnDurchschnitt(form)">
+            <ion-row justify-content-center>
+                <ion-col>
+                    <!-- Input with placeholder -->
+                    <ion-input [(ngModel)]="city" name="Stadt" placeholder="Enter City" required="true"></ion-input>
+                </ion-col>
+                <ion-col>
+                    <ion-button [disabled]="form.invalid" color="light" size="small" type="submit">Show Results
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </form>
+        <ion-row>
+            <ion-col>
+                <ion-card *ngIf="average">
+                    <ion-card-header>
+                        <ion-card-title><img class="headerLogo" src="\assets\flattery_logo.png">{{city}}
+                        </ion-card-title>
+                    </ion-card-header>
 
-          <ion-card-content>
-            <ul>
-              <li>Gesamtbelastung: {{average}} Euro</li>
-              <li>Pro m2: {{averageSqM}} Euro</li>
-            </ul>
-          </ion-card-content>
-        </ion-card>
+                    <ion-card-content>
+                        <ul>
+                            <li>Gesamtbelastung: {{average}} Euro</li>
+                            <li>Pro m2: {{averageSqM}} Euro</li>
+                        </ul>
+                    </ion-card-content>
+                </ion-card>
 
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
 </ion-content>
