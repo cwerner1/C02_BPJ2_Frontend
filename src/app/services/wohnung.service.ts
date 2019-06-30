@@ -1,12 +1,17 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {Wohnung} from '../class/wohnung';
 import {Router} from '@angular/router';
+import {JsonResponse} from '../class/json-response';
+import {Wohnung} from '../class/wohnung';
 
 class IWohnungCreated {
-    wohnung_id: string;
+    wohnungID: string;
+}
+
+class IWohnungAverage {
+    success: boolean;
+    data: any;
 }
 
 @Injectable({
@@ -25,26 +30,36 @@ export class WohnungService {
     constructor(public http: HttpClient, private router: Router) {
     }
 
-    listAll(): Observable<any> {
+    listAll(): Observable<Wohnung[]> {
         const apiendpoint = 'all';
         if (this.wohnungen != null) {
-            return this.wohnungen;
+            //    return this.wohnungen;
         }
         let result = this.http
-            .get(`${this.url}${apiendpoint}`);
-        this.wohnungen = result;
+            .get(`${this.url}${apiendpoint}`).map(response => {
+                const payload = response as JsonResponse;
+                this.wohnungen = payload.data as Wohnung[];
+                return payload.data;
+
+            });
         return result;
     }
 
 
-    getDetails(id): Observable<any> {
+    getDetails(id): Observable<Wohnung> {
         const apiendpoint = 'get/' + id;
 
         if (this.data[id] != null) {
-            return this.data[id];
+            //     return this.data[id];
         }
         let result = this.http
-            .get(`${this.url}${apiendpoint}`);
+            .get(`${this.url}${apiendpoint}`)
+            .map(response => {
+                const payload = response as JsonResponse;
+                this.data[id] = payload.data;
+                return payload.data;
+
+            });
         this.data[id] = result;
         return result;
     }
@@ -62,10 +77,11 @@ export class WohnungService {
 
         this.http.post(`${this.url}${apiendpoint}`, form.value, {headers})
             .subscribe(data => {
-                const jsonData = data as IWohnungCreated;
+                const payload = data as JsonResponse;
+                const jsonData = payload.data as IWohnungCreated;
 
                 this.clearCache();
-                this.router.navigate(['/wohnung', jsonData.wohnung_id]);
+                this.router.navigate(['/wohnung', jsonData.wohnungID]);
 
             }, error => {
                 console.error(error);
@@ -80,7 +96,8 @@ export class WohnungService {
 
         this.http.post(`${this.url}${apiendpoint}`, form.value, {headers})
             .subscribe(data => {
-                const jsonData = data as IWohnungCreated;
+                const payload = data as JsonResponse;
+                const jsonData = payload.data as IWohnungCreated;
 
                 this.clearCache();
                 this.router.navigate(['/profil']);
@@ -98,16 +115,15 @@ export class WohnungService {
         return result;
     }
 
-    getAverage(city): Observable<any> {
+    getAverage(city): any {
         const apiendpoint = 'average';
         const headers = new HttpHeaders();
         headers.append('Accept', 'application/json');
         headers.append('Content-Type', 'application/json');
 
-        let data = this.http.post(`${this.url}${apiendpoint}`, city.value, {headers});
-        const jsonData = data;
+        const data = this.http.post(`${this.url}${apiendpoint}`, '{"city":' + city + '}', {headers})
+            .map((res: Response) => res.json());
         console.log(data);
-        return jsonData.data.average;
-
+        return data;
     }
 }

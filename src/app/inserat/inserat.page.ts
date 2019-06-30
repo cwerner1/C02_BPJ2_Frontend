@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {WohnungService} from '../services/wohnung.service';
 import {Wohnung} from '../class/wohnung';
+import {AuthService} from '../services/auth.service';
 
 
 @Component({
@@ -14,11 +15,12 @@ import {Wohnung} from '../class/wohnung';
 })
 
 export class InseratPage implements OnInit {
-    public wohnung: any = {};
+    public wohnung: {} = {};
     private ctrl = this;
     public edit = false;
+    private userID = null;
 
-    constructor(public wohnungService: WohnungService, private route: ActivatedRoute) {
+    constructor(public wohnungService: WohnungService, private route: ActivatedRoute, public authService: AuthService) {
         const id = this.route.snapshot.paramMap.get('id');
         if (id != null) {
             this.wohnungService.getDetails(id).subscribe(data => {
@@ -26,6 +28,13 @@ export class InseratPage implements OnInit {
                 this.edit = true;
             });
         }
+        this.authService.getUserID().then((userId) => {
+            this.userID = userId;
+        });
+    }
+
+    ionViewCanEnter() {
+        return this.authService.authenticated();
     }
 
     ngOnInit() {
@@ -34,6 +43,7 @@ export class InseratPage implements OnInit {
 
     sendPostRequest(form: any) {
         if (this.edit === false) {
+            form.value.userID = this.userID;
             this.wohnungService.addInserat(form);
         } else {
             this.wohnungService.updateInserat(form);

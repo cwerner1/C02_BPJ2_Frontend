@@ -5,6 +5,9 @@ import 'rxjs/add/operator/map';
 import {IonItemSliding} from '@ionic/angular';
 import {WohnungService} from '../services/wohnung.service';
 import {Wohnung} from '../class/wohnung';
+import {AuthService} from '../services/auth.service';
+import {JsonResponse} from '../class/json-response';
+import {FavoriteService} from '../services/favorite.service';
 
 
 @Injectable()
@@ -29,13 +32,14 @@ export class ListPage implements OnInit {
     ];
     public items: Wohnung[] = [];
 
-    constructor(public wohnungService: WohnungService) {
-        this.wohnungService.listAll().subscribe(data => this.buildList(data));
+    constructor(public wohnungService: WohnungService, public authService: AuthService, public favoriteService: FavoriteService) {
+        this.wohnungService.listAll().subscribe(data => {
+            this.items = data;
+        });
     }
 
-
-    buildList(data) {
-        this.items = data;
+    ionViewCanEnter() {
+        return this.authService.authenticated();
     }
 
     // add back when alpha.4 is out
@@ -45,14 +49,9 @@ export class ListPage implements OnInit {
     ngOnInit() {
     }
 
-    favorite(item: {
-        id: string; address: string; city: string; postalCode: string;
-        rent: string; note: string; icon: string; description: string; surfaceArea: string; roomCount: string
-    }) {
-    }
 
     dropFromList(item) {
-
+// @TODO Remove Favorites from list
         for (let j = 0; j < this.items.length; j++) {
 
             if (this.items[j] === item) {
@@ -60,5 +59,12 @@ export class ListPage implements OnInit {
             }
 
         }
+    }
+
+    addTofavorite(wohnungID: string) {
+        console.log('add To Fav', wohnungID);
+        this.authService.getUserID().then(userID => {
+            this.favoriteService.addFavorite(userID, Number(wohnungID));
+        });
     }
 }

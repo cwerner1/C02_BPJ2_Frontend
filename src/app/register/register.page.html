@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <form  #form="ngForm">
+  <form  #form="ngForm" (ngSubmit)="register(form)">
     <ion-grid>
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
@@ -21,7 +21,7 @@
             </ion-item>
           </div>
           <div padding>
-            <ion-button  size="large" href="/home" [disabled]="form.invalid" expand="block">Register</ion-button>
+            <ion-button  size="large" [disabled]="form.invalid" expand="block" type="submit">Register</ion-button>
 
           </div>
         </ion-col>
