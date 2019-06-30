@@ -121,7 +121,7 @@ export class WohnungService {
         headers.append('Accept', 'application/json');
         headers.append('Content-Type', 'application/json');
 
-        const data = this.http.post(`${this.url}${apiendpoint}`, '{"city":' + city + '}', {headers})
+        const data = this.http.post(`${this.url}${apiendpoint}`, '{"city":"' + city + '"}', {headers})
             .map((res: Response) => res.json());
         console.log(data);
         return data;
