@@ -37,9 +37,9 @@
                        placeholder="Raumanzahl" required="true"></ion-input>
         </ion-item>
         <div *ngIf="!edit">
-        <ion-button [disabled]="form.invalid" class="inseratButton" color="success" expand="full" type="submit">
-            Inseriere Wohnung
-        </ion-button>
+            <ion-button [disabled]="form.invalid" class="inseratButton" color="success" expand="full" type="submit">
+                Inseriere Wohnung
+            </ion-button>
         </div>
         <div *ngIf="edit">
             <ion-button [disabled]="form.invalid" class="inseratButton" color="success" expand="full" type="submit">

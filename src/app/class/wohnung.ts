@@ -4,9 +4,8 @@ export class Wohnung {
     icon: string;
 
     rent: number;
-    roomCount;
-    number;
-    user_id: number;
+    roomCount: number;
+    userID: number;
     addedAt: number;
     address: string;
     city: string;

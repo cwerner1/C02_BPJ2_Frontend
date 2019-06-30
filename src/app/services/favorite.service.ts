@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Wohnung} from '../class/wohnung';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {JsonResponse} from '../class/json-response';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -34,7 +34,7 @@ export class FavoriteService {
             });
     }
 
-    getAllFavoriteWohnungByUserID(userID: number): Observable<Wohnung[]> {
+    getAllFavoriteWohnungByUserID(userID: number): Observable<any> {
 
         const apiendpoint = 'getAllFavoriteWohnungByUserID';
         const headers = new HttpHeaders();
@@ -43,11 +43,7 @@ export class FavoriteService {
 
         return this.http.post(`${this.url}${apiendpoint}`, {
             userID,
-        }, {headers}).map(response => {
-            const payload = response as JsonResponse;
-            return payload.data;
-
-        });
+        }, {headers});
     }
 
     addFavorite(userID: number, wohnungID: number): boolean {

@@ -15,7 +15,7 @@ import {AuthService} from '../services/auth.service';
 })
 
 export class InseratPage implements OnInit {
-    public wohnung: Wohnung = null;
+    public wohnung: {} = {};
     private ctrl = this;
     public edit = false;
     private userID = null;

@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../services/auth.service';
 import {Wohnung} from '../class/wohnung';
 import {FavoriteService} from '../services/favorite.service';
+import {JsonResponse} from '../class/json-response';
 
 @Component({
     selector: 'app-favorites',
@@ -26,8 +27,9 @@ export class FavoritesPage implements OnInit {
 
     reloadList() {
         this.authService.getUserID().then(userID => {
-            this.favoriteService.getAllFavoriteWohnungByUserID(userID).subscribe(data => {
-                this.items = data;
+            this.favoriteService.getAllFavoriteWohnungByUserID(userID).subscribe(response => {
+                const payload = response as JsonResponse;
+                this.items = payload.data;
             });
         });
     }
