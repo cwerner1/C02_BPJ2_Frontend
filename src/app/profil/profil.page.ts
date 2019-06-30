@@ -19,8 +19,6 @@ export class ProfilPage implements OnInit {
 
     constructor(public wohnungService: WohnungService, public authService: AuthService, public profilService: ProfilService) {
         authService.getUserID().then(id => {
-            console.error('@Todo Set user id in Profile Page');
-            console.log('ID ', id);
             this.profilService.getUserDetailById(id).subscribe(response => {
                 const payload = response as JsonResponse;
                 this.user = payload.data;

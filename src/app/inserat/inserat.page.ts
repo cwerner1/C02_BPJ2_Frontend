@@ -15,7 +15,7 @@ import {AuthService} from '../services/auth.service';
 })
 
 export class InseratPage implements OnInit {
-    public wohnung: any = {};
+    public wohnung: Wohnung = null;
     private ctrl = this;
     public edit = false;
     private userID = null;
@@ -43,10 +43,8 @@ export class InseratPage implements OnInit {
 
     sendPostRequest(form: any) {
         if (this.edit === false) {
-            form.value.userId = this.userID;
+            form.value.userID = this.userID;
             this.wohnungService.addInserat(form);
-
-
         } else {
             this.wohnungService.updateInserat(form);
         }

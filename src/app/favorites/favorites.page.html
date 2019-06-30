@@ -1,26 +1,32 @@
 <ion-header class="ion-hide-lg-up">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Deine Favoriten</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Deine Favoriten</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <!--Enable Reorder?-->
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.addressTitle}}
-      <div class="item-note" slot="end">
-        {{item.note}}
+    <ion-list>
+        <ion-item *ngFor="let item of items" id="w{{item.id}}">
+            <div [routerLink]="['/wohnung/', item.id]">
+                <ion-icon [name]="item.icon" slot="start"></ion-icon>
+                {{item.id}}
+                {{item.address}}
+                <div class="item-note" slot="end">
+                    {{item.postalCode}}
+                </div>
+            </div>
+            <ion-button (click)="deleteFavoriteID(item.id)" color="danger" fill="outline">
+                Delete
+                <ion-icon name="trash" slot="end"></ion-icon>
+            </ion-button>
+        </ion-item>
+    </ion-list>
+    <!--
+      <div *ngIf="selectedItem" padding>
+        You navigated here from <b>{{selectedItem.title }}</b>
       </div>
-    </ion-item>
-  </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
+    -->
 </ion-content>

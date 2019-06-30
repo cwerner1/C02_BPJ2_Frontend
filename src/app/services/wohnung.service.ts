@@ -6,7 +6,7 @@ import {JsonResponse} from '../class/json-response';
 import {Wohnung} from '../class/wohnung';
 
 class IWohnungCreated {
-    wohnung_id: string;
+    wohnungID: string;
 }
 
 class IWohnungAverage {
@@ -81,7 +81,7 @@ export class WohnungService {
                 const jsonData = payload.data as IWohnungCreated;
 
                 this.clearCache();
-                this.router.navigate(['/wohnung', jsonData.wohnung_id]);
+                this.router.navigate(['/wohnung', jsonData.wohnungID]);
 
             }, error => {
                 console.error(error);
