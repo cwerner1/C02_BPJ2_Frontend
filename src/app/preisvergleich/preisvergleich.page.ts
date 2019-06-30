@@ -12,15 +12,16 @@ export class PreisvergleichPage implements OnInit {
     average: any;
     averageSqM: any;
     city: any;
+    averageCity: any;
 
     constructor(public wohnungService: WohnungService, public authService: AuthService) {
+        this.authService.redirectToLoginIfNotLoggedIn();
     }
 
     ngOnInit() {
     }
 
     ionViewCanEnter() {
-        return this.authService.authenticated();
     }
 
     returnDurchschnitt(inputValue: any) {
@@ -28,8 +29,7 @@ export class PreisvergleichPage implements OnInit {
             .subscribe(data => {
                 const payload = data as JsonResponse;
                 const jsonData = payload.data;
-                console.log('jsonData', jsonData);
-                this.city = inputValue.value.Stadt;
+                this.averageCity = inputValue.value.Stadt;
                 this.average = jsonData.average;
                 this.averageSqM = jsonData.averageSqM;
                 return jsonData;

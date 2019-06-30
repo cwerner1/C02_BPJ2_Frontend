@@ -21,6 +21,7 @@ export class InseratPage implements OnInit {
     private userID = null;
 
     constructor(public wohnungService: WohnungService, private route: ActivatedRoute, public authService: AuthService) {
+        this.authService.redirectToLoginIfNotLoggedIn();
         const id = this.route.snapshot.paramMap.get('id');
         if (id != null) {
             this.wohnungService.getDetails(id).subscribe(data => {
@@ -34,7 +35,6 @@ export class InseratPage implements OnInit {
     }
 
     ionViewCanEnter() {
-        return this.authService.authenticated();
     }
 
     ngOnInit() {

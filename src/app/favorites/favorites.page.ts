@@ -15,11 +15,11 @@ export class FavoritesPage implements OnInit {
     public items: Wohnung[] = [];
 
     constructor(public favoriteService: FavoriteService, public authService: AuthService) {
+        this.authService.redirectToLoginIfNotLoggedIn();
         this.reloadList();
     }
 
     ionViewCanEnter() {
-        return this.authService.authenticated();
     }
 
     ngOnInit() {

@@ -63,6 +63,7 @@ export class AppComponent {
 
     logout() {
         this.authService.removeLoginStage();
+        console.log('logout');
         this.router.navigate(['/login']);
     }
 }
