@@ -83,7 +83,7 @@ export class AuthService {
         if (this.storage.get('ID').then(value => {
             if (value != null) {
                 this.authenticationState.next(true);
-                console.log('set Logged in');
+
             }
         })) {
         }
@@ -93,12 +93,21 @@ export class AuthService {
         return this.authenticationState.value;
     }
 
-    public redirectToLoginIfNotLoggedIn(): boolean {
-        if (!this.isLoggedIn()) {
-            this.router.navigate(['/login']);
-            return false;
+    public redirectToLoginIfNotLoggedIn() {
+        const result = this.authenticationState.value;
+        if (result) {
+            return;
         }
-        return true;
+
+        this.storage.get('ID').then(value => {
+            if (value != null) {
+                this.authenticationState.next(true);
+            } else {
+                this.router.navigate(['/login']);
+            }
+        });
+
+
     }
 
     public getUserID() {
@@ -111,7 +120,6 @@ export class AuthService {
             this.storage.set('ACCESS_TOKEN', res.data.access_token);
             this.storage.set('EXPIRES_IN', res.data.expires_in);
             this.authenticationState.next(true);
-            console.log('this.storage', this.storage);
             return true;
         }
         this.removeLoginStage();

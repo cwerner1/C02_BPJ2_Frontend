@@ -15,9 +15,6 @@ export class LoginPage implements OnInit {
 
 
     constructor(public menuCtrl: MenuController, public authService: AuthService, private router: Router) {
-        if (this.authService.isLoggedIn()) {
-            this.router.navigate(['/home']);
-        }
         this.menuCtrl.enable(false);
     }
 
