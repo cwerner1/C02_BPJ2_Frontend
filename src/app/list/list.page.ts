@@ -51,7 +51,8 @@ export class ListPage implements OnInit {
 
 
     dropFromList(item) {
-// @TODO Remove Favorites from list
+        // @TODO Use Case für den Fall ausformulieren - mit dem Ziel
+        // Als user möchte ich einen eintrag aus der list entfernen können.
         for (let j = 0; j < this.items.length; j++) {
 
             if (this.items[j] === item) {

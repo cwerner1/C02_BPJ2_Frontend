@@ -27,8 +27,6 @@ export class RegisterPage implements OnInit {
     }
 
     register(form) {
-        console.log(form.value);
-
         const u: User = {};
         u.email = form.value.email;
         u.password = form.value.password;

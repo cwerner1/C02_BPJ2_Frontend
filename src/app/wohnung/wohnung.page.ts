@@ -21,18 +21,19 @@ export class WohnungPage implements OnInit {
 
     }
 
+// @TODO Christian Wohnung lädt nicht immer richtig
     ionViewWillEnter() {
         this.wohnung = null;
+        const id = this.route.snapshot.paramMap.get('id');
+        this.wohnungService.getDetails(id).subscribe(data => {
+            this.wohnung = new Wohnung(data);
+        });
     }
 
     ionViewCanEnter() {
     }
 
     ngOnInit() {
-        const id = this.route.snapshot.paramMap.get('id');
-        this.wohnungService.getDetails(id).subscribe(data => {
-            this.wohnung = new Wohnung(data);
-        });
 
     }
 
