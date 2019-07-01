@@ -18,6 +18,10 @@ export class WohnungPage implements OnInit {
 
     constructor(public wohnungService: WohnungService, private route: ActivatedRoute, public authService: AuthService) {
         this.authService.redirectToLoginIfNotLoggedIn();
+
+    }
+
+    ionViewWillEnter() {
         this.wohnung = null;
     }
 
