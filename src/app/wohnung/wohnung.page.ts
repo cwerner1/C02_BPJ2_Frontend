@@ -48,4 +48,11 @@ export class WohnungPage implements OnInit {
         });
     }
 
+    removeFromFavorite(wohnungID: string) {
+        console.log('remove From Fav', wohnungID);
+        this.authService.getUserID().then(userID => {
+            this.favoriteService.removeFavorite(userID, Number(wohnungID));
+        });
+    }
+
 }

@@ -24,9 +24,16 @@
                     <ion-icon name="build" slot="end"></ion-icon>
                 </ion-button>
             </div>
-            <div *ngIf="userID!=wohnung.userID">
+
+            <div *ngIf="!favoriteService.isInFavoriteList(wohnung.id,userID)">
                 <ion-button (click)="addTofavorite(wohnung.id)" color="success" fill="outline">
                     Add to Favorit
+                    <ion-icon name="heart" slot="end"></ion-icon>
+                </ion-button>
+            </div>
+            <div *ngIf="favoriteService.isInFavoriteList(wohnung.id,userID)">
+                <ion-button (click)="removeFromFavorite(wohnung.id)" fill="outline">
+                    remove from Favorit
                     <ion-icon name="heart" slot="end"></ion-icon>
                 </ion-button>
             </div>
@@ -34,6 +41,7 @@
             <!-- @Todo Tobias Herzl für Favoriten - erledigt -->
             <!-- @Todo Tobias Herzl für Favoriten lauffähig machen - erledigt -->
             <!-- @TODO Tobias Ausgabe des  wohnung.addedAt    | formater von ionic - erledigt -->
+
             <img id="profile-image" src="\assets\flattery_logo.png">
             <h3 id="flat-name">{{wohnung.description}}</h3>
             <h5><i class="ion ion-email">Adresse: {{wohnung.address}}</i></h5>

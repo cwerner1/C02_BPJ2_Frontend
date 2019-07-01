@@ -154,7 +154,7 @@ export class WohnungService {
 
     async presentMessage(message: string, duration?: number) {
 
-        let options = {} as ToastOptions;
+        let options = {message: '', duration: undefined};
         options.message = message;
         if (duration !== undefined) {
             options.duration = duration;

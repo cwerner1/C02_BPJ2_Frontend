@@ -17,7 +17,7 @@ export class AuthService {
     private AUTH_SERVER_ADDRESS = 'http://localhost:8080/user';
     private authenticationState = new BehaviorSubject(false);
 
-    private toast: HTMLIonToastElement = null;
+    public toast: HTMLIonToastElement = null;
 
     constructor(private  httpClient: HttpClient, private router: Router, public storage: Storage, public toastController: ToastController) {
     }

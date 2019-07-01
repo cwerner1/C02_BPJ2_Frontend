@@ -7,4 +7,5 @@ export interface AuthResponse {
         expires_in: number,
         errorMessage?: string,
     };
+    errorMessage?: string;
 }
