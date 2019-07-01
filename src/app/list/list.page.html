@@ -28,7 +28,7 @@
                 <ion-icon name="heart" slot="icon-only"></ion-icon>
             </ion-item-option>
         </ion-item-options>
-        <ion-item-options side="end">
+        <ion-item-options (ionSwipe)="dropFromList(item)" side="end">
             <ion-item-option (click)="dropFromList(item)" color="danger">
                 <ion-icon name="close-circle" slot="icon-only"></ion-icon>
             </ion-item-option>
