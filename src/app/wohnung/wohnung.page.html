@@ -10,14 +10,20 @@
 </ion-header>
 
 
-
 <ion-content *ngIf="wohnung">
 
     <div id="profile-bg"></div>
     <div id="content">
         <div id="profile-info">
             <!-- @Todo Tobias Schraubeschlüssel für editieren -->
-            <!-- @Todo Christian Schraubenschlüssel nur anzeigen wenn der aktuelle user  übereinstimmt -  (+usecase dokument ) -->
+            <!-- @Todo  ✅ Christian Schraubenschlüssel nur anzeigen wenn der aktuelle user  übereinstimmt -  (+usecase dokument )  --- erledigt -->
+
+            <div *ngIf="userID==wohnung.userID">
+                <ion-button [routerLink]="['/wohnung/edit/', wohnung.id]" color="success" fill="outline">
+                    Edit
+                    <ion-icon name="build" slot="end"></ion-icon>
+                </ion-button>
+            </div>
 
             <!-- @Todo Tobias Herzl für Favoriten -->
             <!-- @Todo Christian Herzl für Favoriten lauffähig machen -->

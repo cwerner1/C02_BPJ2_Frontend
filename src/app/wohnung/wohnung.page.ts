@@ -15,13 +15,16 @@ import {AuthService} from '../services/auth.service';
 })
 export class WohnungPage implements OnInit {
     private wohnung: Wohnung = null;
+    private userID = null;
 
     constructor(public wohnungService: WohnungService, private route: ActivatedRoute, public authService: AuthService) {
         this.authService.redirectToLoginIfNotLoggedIn();
-
+        this.authService.getUserID().then(id => {
+            this.userID = id;
+        });
     }
 
-    // @TODO Christian Wohnung lädt nicht immer richtig   - erledigt
+    // @TODO ✅ Christian Wohnung lädt nicht immer richtig   - erledigt
     ionViewWillEnter() {
         this.wohnung = null;
         const id = this.route.snapshot.paramMap.get('id');

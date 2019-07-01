@@ -24,6 +24,9 @@ export class LoginPage implements OnInit {
 
     ionViewWillEnter() {
         this.menuCtrl.enable(false);
+        if (this.authService.toast != null) {
+            this.authService.toast.dismiss();
+        }
     }
 
     login(form) {

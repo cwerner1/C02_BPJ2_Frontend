@@ -4,6 +4,7 @@ export interface AuthResponse {
         id: number,
         email: string,
         access_token: string,
-        expires_in: number
+        expires_in: number,
+        errorMessage?: string,
     };
 }

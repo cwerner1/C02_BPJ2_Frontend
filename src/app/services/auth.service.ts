@@ -5,6 +5,7 @@ import {Storage} from '@ionic/storage';
 import {User} from '../auth/user';
 import {AuthResponse} from '../auth/auth-response';
 import {Router} from '@angular/router';
+import {ToastController} from '@ionic/angular';
 
 @Injectable({
     providedIn: 'root'
@@ -16,7 +17,9 @@ export class AuthService {
     private AUTH_SERVER_ADDRESS = 'http://localhost:8080/user';
     private authenticationState = new BehaviorSubject(false);
 
-    constructor(private  httpClient: HttpClient, private router: Router, public storage: Storage) {
+    private toast: HTMLIonToastElement = null;
+
+    constructor(private  httpClient: HttpClient, private router: Router, public storage: Storage, public toastController: ToastController) {
     }
 
 
@@ -24,41 +27,42 @@ export class AuthService {
         const headers = new HttpHeaders();
         headers.append('Accept', 'application/json');
         headers.append('Content-Type', 'application/json');
-
+        if (this.toast != null) {
+            this.toast.dismiss();
+        }
         this.httpClient.post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/register`, user, {headers}).subscribe(async res => {
-            console.log('res', res);
             if (this.setLoggedInState(res)) {
                 this.router.navigate(['/home']);
             } else {
-                console.warn('Register Problem');
+                this.toast = await this.toastController.create({
+                    message: res.errorMessage,
+                });
+                this.toast.present();
             }
 
         }, error => {
             console.error(error);
         });
         return null;
-        // return this.httpClient.post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/register`, user).pipe(
-        //     tap(async (res: AuthResponse) => {
-        //         console.log('register response2', res);
-        //         // if (res.user) {
-        //         //     await this.storage.set('ACCESS_TOKEN', res.user.access_token);
-        //         //     await this.storage.set('EXPIRES_IN', res.user.expires_in);
-        //         //     this.authenticationState.next(true);
-        //         // }
-        //     })
-        // );
+
     }
 
     public login(user: User): Observable<AuthResponse> {
         const headers = new HttpHeaders();
         headers.append('Accept', 'application/json');
         headers.append('Content-Type', 'application/json');
+        if (this.toast != null) {
+            this.toast.dismiss();
+        }
         this.httpClient.post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/login`, user, {headers}).subscribe(async res => {
 
             if (this.setLoggedInState(res)) {
                 this.router.navigate(['/home']);
             } else {
-                console.error('Login Problem');
+                this.toast = await this.toastController.create({
+                    message: res.errorMessage,
+                });
+                this.toast.present();
                 return false;
             }
 
@@ -117,8 +121,8 @@ export class AuthService {
     public setLoggedInState(res: AuthResponse): boolean {
         if (res.success && res.data) {
             this.storage.set('ID', res.data.id);
-            this.storage.set('ACCESS_TOKEN', res.data.access_token);
-            this.storage.set('EXPIRES_IN', res.data.expires_in);
+            //    this.storage.set('ACCESS_TOKEN', res.data.access_token);
+            //    this.storage.set('EXPIRES_IN', res.data.expires_in);
             this.authenticationState.next(true);
             return true;
         }
@@ -128,8 +132,8 @@ export class AuthService {
 
     public removeLoginStage() {
         this.storage.remove('ID');
-        this.storage.remove('ACCESS_TOKEN');
-        this.storage.remove('EXPIRES_IN');
+        //    this.storage.remove('ACCESS_TOKEN');
+        //    this.storage.remove('EXPIRES_IN');
         this.authenticationState.next(false);
     }
 

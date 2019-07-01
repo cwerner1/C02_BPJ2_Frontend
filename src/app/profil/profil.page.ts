@@ -53,7 +53,6 @@ export class ProfilPage implements OnInit {
             this.wohnungService.listAllByUserID(this.userID).subscribe(response => {
                 const payload = response as JsonResponse;
                 this.items = payload.data;
-                console.log('wohnungen by User:', payload.data);
             });
         });
 

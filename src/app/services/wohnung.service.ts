@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {JsonResponse} from '../class/json-response';
 import {Wohnung} from '../class/wohnung';
+import {ToastController} from '@ionic/angular';
 
 class IWohnungCreated {
     wohnungID: string;
@@ -13,6 +14,7 @@ class IWohnungAverage {
     success: boolean;
     data: any;
 }
+
 
 @Injectable({
     providedIn: 'root'
@@ -25,9 +27,10 @@ export class WohnungService {
     url = 'http://127.0.0.1:8080/wohnung/';
     private data: any = {};
     private wohnungen: any = null;
+    private toast: HTMLIonToastElement = null;
 
 
-    constructor(public http: HttpClient, private router: Router) {
+    constructor(public http: HttpClient, private router: Router, private toastController: ToastController) {
     }
 
     listAll(): Observable<Wohnung[]> {
@@ -74,18 +77,23 @@ export class WohnungService {
         const headers = new HttpHeaders();
         headers.append('Accept', 'application/json');
         headers.append('Content-Type', 'application/json');
+        if (this.toast != null) {
+            this.toast.dismiss();
 
+        }
         this.http.post(`${this.url}${apiendpoint}`, form.value, {headers})
             .subscribe(data => {
                 const payload = data as JsonResponse;
                 const jsonData = payload.data as IWohnungCreated;
 
                 this.clearCache();
+                this.presentMessage('Die Wohnung wurde inseriet', 5000);
                 this.router.navigate(['/wohnung', jsonData.wohnungID]);
 
-                // @TODO Christian Add Toast on SAve
+                // @TODO  ✅  Christian Add Toast on SAve  - erledigt 🎉🥳 🍺🍺🍺
 
             }, error => {
+                this.presentMessage('ein unerwarteter Fehler ist aufgetreten', 5000);
                 console.error(error);
             });
     }
@@ -95,15 +103,19 @@ export class WohnungService {
         const headers = new HttpHeaders();
         headers.append('Accept', 'application/json');
         headers.append('Content-Type', 'application/json');
-
+        if (this.toast != null) {
+            this.toast.dismiss();
+        }
         this.http.post(`${this.url}${apiendpoint}`, form.value, {headers})
             .subscribe(data => {
                 const payload = data as JsonResponse;
                 const jsonData = payload.data as IWohnungCreated;
 
                 this.clearCache();
+                this.presentMessage('Die Wohnung wurde gespeichert');
+
                 this.router.navigate(['/profil']);
-                // @TODO Christian Add Toast on update
+                // @TODO  ✅ Christian Add Toast on update   - erledigt 🎉🥳 🍺🍺🍺
 
             }, error => {
                 console.error(error);
@@ -139,4 +151,17 @@ export class WohnungService {
 
         return this.http.post(`${this.url}${apiendpoint}`, {wohnungID}, {headers});
     }
+
+    async presentMessage(message: string, duration?: number) {
+
+        let options = {} as ToastOptions;
+        options.message = message;
+        if (duration !== undefined) {
+            options.duration = duration;
+        }
+        console.log(options);
+        this.toast = await this.toastController.create(options);
+        this.toast.present();
+    }
+
 }
