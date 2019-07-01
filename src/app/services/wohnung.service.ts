@@ -159,7 +159,6 @@ export class WohnungService {
         if (duration !== undefined) {
             options.duration = duration;
         }
-        console.log(options);
         this.toast = await this.toastController.create(options);
         this.toast.present();
     }

@@ -112,10 +112,8 @@ export class FavoriteService {
 
     isInFavoriteList(wohnungID: string, userID: string): boolean {
         if (this.favoriteList != null) {
-            console.log('getPos', this.favoriteList, wohnungID);
             return this.favoriteList.indexOf(Number(wohnungID)) > -1;
         } else {
-            console.log('load List');
             this.getAllFavoriteByUserID(Number(userID));
             return false;
         }
