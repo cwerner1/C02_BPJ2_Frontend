@@ -24,7 +24,7 @@
                     <ion-icon name="build" slot="end"></ion-icon>
                 </ion-button>
             </div>
-            <div>
+            <div *ngIf="userID!=wohnung.userID">
                 <ion-button (click)="addTofavorite(wohnung.id)" color="success" fill="outline">
                     Add to Favorit
                     <ion-icon name="heart" slot="end"></ion-icon>
