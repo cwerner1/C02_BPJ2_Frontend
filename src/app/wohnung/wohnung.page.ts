@@ -21,7 +21,7 @@ export class WohnungPage implements OnInit {
 
     }
 
-// @TODO Christian Wohnung lädt nicht immer richtig
+    // @TODO Christian Wohnung lädt nicht immer richtig   - erledigt
     ionViewWillEnter() {
         this.wohnung = null;
         const id = this.route.snapshot.paramMap.get('id');

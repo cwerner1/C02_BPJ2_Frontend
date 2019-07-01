@@ -30,10 +30,11 @@ export class ListPage implements OnInit {
         'bluetooth',
         'build'
     ];
-    public items: Wohnung[] = [];
+    public items: Wohnung[];
 
     constructor(public wohnungService: WohnungService, public authService: AuthService, public favoriteService: FavoriteService) {
         this.authService.redirectToLoginIfNotLoggedIn();
+        this.items = [];
     }
 
     ionViewCanEnter() {
