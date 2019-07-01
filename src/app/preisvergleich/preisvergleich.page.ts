@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {WohnungService} from '../services/wohnung.service';
 import {AuthService} from '../services/auth.service';
 import {JsonResponse} from '../class/json-response';
+import {json} from "@angular-devkit/core";
 
 @Component({
     selector: 'app-preisvergleich',
@@ -9,10 +10,10 @@ import {JsonResponse} from '../class/json-response';
     styleUrls: ['./preisvergleich.page.scss'],
 })
 export class PreisvergleichPage implements OnInit {
-    average: any;
-    averageSqM: any;
+
     city: any;
-    averageCity: any;
+    cities : any;
+    count : any;
 
     constructor(public wohnungService: WohnungService, public authService: AuthService) {
         this.authService.redirectToLoginIfNotLoggedIn();
@@ -29,9 +30,8 @@ export class PreisvergleichPage implements OnInit {
             .subscribe(data => {
                 const payload = data as JsonResponse;
                 const jsonData = payload.data;
-                this.averageCity = inputValue.value.Stadt;
-                this.average = jsonData.average;
-                this.averageSqM = jsonData.averageSqM;
+                this.cities = jsonData;
+                this.count = jsonData.length;
                 return jsonData;
             });
 

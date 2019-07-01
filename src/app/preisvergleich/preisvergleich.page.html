@@ -23,22 +23,26 @@
         </form>
         <ion-row>
             <ion-col>
-                <ion-card *ngIf="average">
+                <ion-card *ngFor="let c of cities" id="c{{c.cityName}}">
                     <ion-card-header>
-                        <ion-card-title><img class="headerLogo" src="\assets\flattery_logo.png">{{averageCity}}
+                        <ion-card-title>
+                            <img class="headerLogo" src="\assets\flattery_logo.png">{{c.cityName}}
                         </ion-card-title>
                     </ion-card-header>
 
                     <ion-card-content>
                         <ul>
-                            <li>Gesamtbelastung: {{average}} Euro</li>
-                            <li>Pro m2: {{averageSqM}} Euro</li>
+                            <li>Gesamtbelastung: {{c.average}} Euro</li>
+                            <li>Pro m2: {{c.averageSqM}} Euro</li>
                         </ul>
                     </ion-card-content>
                 </ion-card>
-                <ion-card *ngIf="average==0">
-                    <!-- @TODO Tobias& dem Peter Tester -  Schöne ausgabe wenns leer is -->
-                    Schöne ausgabe wenn nix da is
+                <ion-card *ngIf="count==0">
+                    <ion-card-header>
+                        <ion-card-title>
+                            <img class="headerLogo" src="\assets\flattery_logo.png">Keine Ergebnisse. :(
+                        </ion-card-title>
+                    </ion-card-header>
                 </ion-card>
             </ion-col>
         </ion-row>
