@@ -14,6 +14,7 @@
 ion-app {
   ion-split-pane {
     ion-menu {
+      --width: 250px;
       ion-toolbar {
         --background: var(--ion-color-favorite);
       }
@@ -53,10 +54,28 @@ ion-footer{
 }
 
 .logOut{
-  padding: 0 0 0 0;
+  padding: 0 5px 0 5px;
   margin: 0 0 0 0
 }
 
 .sc-ion-buttons-md-h {
   display: block;
+}
+
+.cardHeaders{
+
+  background-color: var(--ion-color-favorite);
+  border-bottom: solid;
+  border-bottom-color: lightgrey;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.6px;
+  word-spacing: 1.6px;
+  color: #000000;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+
 }
