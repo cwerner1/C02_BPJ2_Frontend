@@ -16,10 +16,11 @@ export class FavoritesPage implements OnInit {
 
     constructor(public favoriteService: FavoriteService, public authService: AuthService) {
         this.authService.redirectToLoginIfNotLoggedIn();
-        this.reloadList();
+
     }
 
-    ionViewCanEnter() {
+    ionViewWillEnter() {
+        this.reloadList();
     }
 
     ngOnInit() {

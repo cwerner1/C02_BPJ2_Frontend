@@ -19,12 +19,21 @@ export class InseratPage implements OnInit {
     private ctrl = this;
     public edit = false;
     private userID = null;
+    private wohnungID = null;
 
     constructor(public wohnungService: WohnungService, private route: ActivatedRoute, public authService: AuthService) {
         this.authService.redirectToLoginIfNotLoggedIn();
-        const id = this.route.snapshot.paramMap.get('id');
-        if (id != null) {
-            this.wohnungService.getDetails(id).subscribe(data => {
+
+    }
+
+    ionViewCanEnter() {
+    }
+
+    ionViewWillEnter() {
+        const wohnungID = this.route.snapshot.paramMap.get('id');
+        if (wohnungID != null) {
+            this.wohnungService.getDetails(wohnungID).subscribe(data => {
+                this.wohnungID = wohnungID;
                 this.wohnung = new Wohnung(data);
                 this.edit = true;
             });
@@ -33,9 +42,6 @@ export class InseratPage implements OnInit {
             this.userID = userId;
         });
         this.wohnung = {};
-    }
-
-    ionViewCanEnter() {
     }
 
     ngOnInit() {
@@ -47,6 +53,8 @@ export class InseratPage implements OnInit {
             form.value.userID = this.userID;
             this.wohnungService.addInserat(form);
         } else {
+            form.value.id = this.wohnungID;
+            form.value.userID = this.userID;
             this.wohnungService.updateInserat(form);
         }
     }

@@ -34,19 +34,19 @@ export class ListPage implements OnInit {
 
     constructor(public wohnungService: WohnungService, public authService: AuthService, public favoriteService: FavoriteService) {
         this.authService.redirectToLoginIfNotLoggedIn();
-        this.wohnungService.listAll().subscribe(data => {
-            this.items = data;
-        });
     }
 
     ionViewCanEnter() {
     }
 
-    // add back when alpha.4 is out
-    // navigate(item) {
-    //   this.router.navigate(['/list', JSON.stringify(item)]);
-    // }
     ngOnInit() {
+
+    }
+
+    ionViewWillEnter() {
+        this.wohnungService.listAll().subscribe(data => {
+            this.items = data;
+        });
     }
 
 

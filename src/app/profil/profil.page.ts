@@ -20,7 +20,19 @@ export class ProfilPage implements OnInit {
 
     constructor(public wohnungService: WohnungService, public authService: AuthService, public profilService: ProfilService) {
         this.authService.redirectToLoginIfNotLoggedIn();
-        authService.getUserID().then(id => {
+
+    }
+
+    ionViewCanEnter() {
+    }
+
+    ngOnInit() {
+
+    }
+
+    ionViewWillEnter() {
+
+        this.authService.getUserID().then(id => {
             this.userID = id;
             this.profilService.getUserDetailById(id).subscribe(response => {
                 const payload = response as JsonResponse;
@@ -33,12 +45,6 @@ export class ProfilPage implements OnInit {
                 console.log('wohnungen by User:', payload.data);
             });
         });
-    }
-
-    ionViewCanEnter() {
-    }
-
-    ngOnInit() {
     }
 
 
