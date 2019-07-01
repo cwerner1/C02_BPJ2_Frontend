@@ -8,22 +8,28 @@
 </ion-header>
 
 <ion-content>
-    <ion-list>
-        <ion-item *ngFor="let item of items" id="w{{item.id}}">
-            <div [routerLink]="['/wohnung/', item.id]">
-                <ion-icon [name]="item.icon" slot="start"></ion-icon>
-                {{item.id}}
-                {{item.address}}
-                <div class="item-note" slot="end">
-                    {{item.postalCode}}
-                </div>
-            </div>
-            <ion-button (click)="deleteFavoriteID(item.id)" color="danger" fill="outline">
-                Delete
-                <ion-icon name="trash" slot="end"></ion-icon>
-            </ion-button>
-        </ion-item>
-    </ion-list>
+    <ion-card>
+        <ion-card-header class="cardHeaders" color="light">Your Favorites</ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item *ngFor="let item of items" id="w{{item.id}}">
+                    <ion-icon [name]="'heart'" slot="start"></ion-icon>
+                    <ion-label [routerLink]="['/wohnung/', item.id]">
+                        <h2>{{item.description}}</h2>
+                        <p>Adresse: {{item.address}}</p>
+                        <p>Stadt: {{item.city}}</p>
+                        <p>Miete: {{item.rent}}&euro;</p>
+                    </ion-label>
+                    <div class="item-note" slot="end">
+                        <ion-button (click)="deleteFavoriteID(item.id)" color="danger" fill="outline">
+                            Delete
+                            <ion-icon name="trash" slot="end"></ion-icon>
+                        </ion-button>
+                    </div>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
     <!--
       <div *ngIf="selectedItem" padding>
         You navigated here from <b>{{selectedItem.title }}</b>
