@@ -36,7 +36,10 @@
                         </ul>
                     </ion-card-content>
                 </ion-card>
-
+                <ion-card *ngIf="average==0">
+                    <!-- @TODO Tobias& dem Peter Tester -  Schöne ausgabe wenns leer is -->
+                    Schöne ausgabe wenn nix da is
+                </ion-card>
             </ion-col>
         </ion-row>
     </ion-grid>

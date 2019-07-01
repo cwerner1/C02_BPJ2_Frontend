@@ -15,7 +15,6 @@ export class LoginPage implements OnInit {
 
 
     constructor(public menuCtrl: MenuController, public authService: AuthService, private router: Router) {
-        this.menuCtrl.enable(false);
     }
 
     ngOnInit() {
@@ -24,7 +23,7 @@ export class LoginPage implements OnInit {
     }
 
     ionViewWillEnter() {
-
+        this.menuCtrl.enable(false);
     }
 
     login(form) {

@@ -83,6 +83,8 @@ export class WohnungService {
                 this.clearCache();
                 this.router.navigate(['/wohnung', jsonData.wohnungID]);
 
+                // @TODO Christian Add Toast on SAve
+
             }, error => {
                 console.error(error);
             });
@@ -101,6 +103,7 @@ export class WohnungService {
 
                 this.clearCache();
                 this.router.navigate(['/profil']);
+                // @TODO Christian Add Toast on update
 
             }, error => {
                 console.error(error);
