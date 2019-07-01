@@ -90,7 +90,7 @@ export class WohnungService {
                 this.presentMessage('Die Wohnung wurde inseriet', 5000);
                 this.router.navigate(['/wohnung', jsonData.wohnungID]);
 
-                // @TODO  ✅  Christian Add Toast on SAve  - erledigt 🎉🥳 🍺🍺🍺
+                // @TODO  ✅ Christian Add Toast on SAve  - erledigt 🎉🥳 🍺🍺🍺
 
             }, error => {
                 this.presentMessage('ein unerwarteter Fehler ist aufgetreten', 5000);
@@ -112,7 +112,7 @@ export class WohnungService {
                 const jsonData = payload.data as IWohnungCreated;
 
                 this.clearCache();
-                this.presentMessage('Die Wohnung wurde gespeichert');
+                this.presentMessage('Die Wohnung wurde gespeichert', 5000);
 
                 this.router.navigate(['/profil']);
                 // @TODO  ✅ Christian Add Toast on update   - erledigt 🎉🥳 🍺🍺🍺
