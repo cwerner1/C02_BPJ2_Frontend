@@ -9,10 +9,10 @@ import {MenuController} from '@ionic/angular';
 })
 export class HomePage {
     constructor(public menuCtrl: MenuController, public authService: AuthService) {
+        this.authService.redirectToLoginIfNotLoggedIn();
     }
 
     ionViewCanEnter() {
-        return this.authService.authenticated();
     }
 
     ionViewWillEnter() {

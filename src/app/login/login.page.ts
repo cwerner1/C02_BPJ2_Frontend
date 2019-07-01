@@ -10,11 +10,12 @@ import {Router} from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-    constructor(public menuCtrl: MenuController, public authService: AuthService, private router: Router) {
+    private email: string; // prefil if once logged in
+    private password: string;
 
-        if (this.authService.isLoggedIn()) {
-            this.router.navigate(['/home']);
-        }
+
+    constructor(public menuCtrl: MenuController, public authService: AuthService, private router: Router) {
+        this.menuCtrl.enable(false);
     }
 
     ngOnInit() {
@@ -23,7 +24,10 @@ export class LoginPage implements OnInit {
     }
 
     ionViewWillEnter() {
-        this.menuCtrl.enable(false);
 
+    }
+
+    login(form) {
+        this.authService.login(form.value);
     }
 }

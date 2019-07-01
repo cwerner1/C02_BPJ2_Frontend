@@ -12,13 +12,9 @@ import {Router} from '@angular/router';
 export class RegisterPage implements OnInit {
 
     constructor(public menuCtrl: MenuController, public authService: AuthService, private router: Router) {
-        if (this.authService.isLoggedIn()) {
-            this.router.navigate(['/home']);
-        }
     }
 
     ionViewCanEnter() {
-        return this.authService.authenticated();
     }
 
     ngOnInit() {

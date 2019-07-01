@@ -33,13 +33,13 @@ export class ListPage implements OnInit {
     public items: Wohnung[] = [];
 
     constructor(public wohnungService: WohnungService, public authService: AuthService, public favoriteService: FavoriteService) {
+        this.authService.redirectToLoginIfNotLoggedIn();
         this.wohnungService.listAll().subscribe(data => {
             this.items = data;
         });
     }
 
     ionViewCanEnter() {
-        return this.authService.authenticated();
     }
 
     // add back when alpha.4 is out

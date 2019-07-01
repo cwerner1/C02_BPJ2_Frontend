@@ -55,11 +55,11 @@ export class AuthService {
         headers.append('Content-Type', 'application/json');
         this.httpClient.post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/login`, user, {headers}).subscribe(async res => {
 
-            console.log('res', res);
             if (this.setLoggedInState(res)) {
-                this.router.navigate(['/']);
+                this.router.navigate(['/home']);
             } else {
-                console.warn('Login Problem');
+                console.error('Login Problem');
+                return false;
             }
 
         }, error => {
@@ -75,12 +75,39 @@ export class AuthService {
     }
 
     public isLoggedIn() {
-        console.log('is LoggedIn: ', this.authenticationState.value);
-        return this.authenticationState.value;
+        const result = this.authenticationState.value;
+
+        if (result) {
+            return true;
+        }
+        if (this.storage.get('ID').then(value => {
+            if (value != null) {
+                this.authenticationState.next(true);
+
+            }
+        })) {
+        }
     }
 
     public authenticated() {
-        return this.isLoggedIn();
+        return this.authenticationState.value;
+    }
+
+    public redirectToLoginIfNotLoggedIn() {
+        const result = this.authenticationState.value;
+        if (result) {
+            return;
+        }
+
+        this.storage.get('ID').then(value => {
+            if (value != null) {
+                this.authenticationState.next(true);
+            } else {
+                this.router.navigate(['/login']);
+            }
+        });
+
+
     }
 
     public getUserID() {
@@ -93,7 +120,6 @@ export class AuthService {
             this.storage.set('ACCESS_TOKEN', res.data.access_token);
             this.storage.set('EXPIRES_IN', res.data.expires_in);
             this.authenticationState.next(true);
-            console.log('this.storage', this.storage);
             return true;
         }
         this.removeLoginStage();

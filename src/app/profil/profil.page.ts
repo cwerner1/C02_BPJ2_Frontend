@@ -16,9 +16,12 @@ export class ProfilPage implements OnInit {
 
     public items: Wohnung[] = [];
     public user: User = null;
+    private userID = null;
 
     constructor(public wohnungService: WohnungService, public authService: AuthService, public profilService: ProfilService) {
+        this.authService.redirectToLoginIfNotLoggedIn();
         authService.getUserID().then(id => {
+            this.userID = id;
             this.profilService.getUserDetailById(id).subscribe(response => {
                 const payload = response as JsonResponse;
                 this.user = payload.data;
@@ -33,11 +36,20 @@ export class ProfilPage implements OnInit {
     }
 
     ionViewCanEnter() {
-        return this.authService.authenticated();
     }
 
     ngOnInit() {
     }
 
 
+    deleteWohnung(id: string) {
+        this.wohnungService.removeWohnung(id).subscribe(response2 => {
+            this.wohnungService.listAllByUserID(this.userID).subscribe(response => {
+                const payload = response as JsonResponse;
+                this.items = payload.data;
+                console.log('wohnungen by User:', payload.data);
+            });
+        });
+
+    }
 }

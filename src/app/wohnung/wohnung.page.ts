@@ -17,11 +17,11 @@ export class WohnungPage implements OnInit {
     private wohnung: Wohnung = null;
 
     constructor(public wohnungService: WohnungService, private route: ActivatedRoute, public authService: AuthService) {
+        this.authService.redirectToLoginIfNotLoggedIn();
         this.wohnung = null;
     }
 
     ionViewCanEnter() {
-        return this.authService.authenticated();
     }
 
     ngOnInit() {
