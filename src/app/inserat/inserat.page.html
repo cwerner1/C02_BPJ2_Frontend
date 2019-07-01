@@ -10,42 +10,47 @@
 </ion-header>
 
 <ion-content>
-    <form #form="ngForm" (ngSubmit)="sendPostRequest(form)">
-        <!-- Inputs with labels -->
-        <ion-item>
-            <ion-label position="floating"><p>Adresse</p></ion-label>
-            <ion-input [(ngModel)]="ctrl.wohnung.description" clearInput
-                       name="description"
-                       placeholder="Beschreibung der Wohnung" required="true"></ion-input>
-            <ion-input [(ngModel)]="ctrl.wohnung.address" clearInput name="address"
-                       placeholder="Straße" required="true"></ion-input>
-            <ion-input [(ngModel)]="ctrl.wohnung.postalCode" clearInput name="postalCode"
-                       placeholder="Postleitzahl" required="true"></ion-input>
-            <ion-input [(ngModel)]="ctrl.wohnung.city" clearInput name="city" placeholder="Stadt"
-                       required="true"></ion-input>
-            <ion-input [(ngModel)]="ctrl.wohnung.country" clearInput name="country"
-                       placeholder="Land" required="true"></ion-input>
-        </ion-item>
+    <ion-card>
+        <ion-card-header class="cardHeaders" color="light">Inseriere deine Wohnung</ion-card-header>
+        <form #form="ngForm" (ngSubmit)="sendPostRequest(form)">
+            <!-- Inputs with labels -->
+            <ion-item>
+                <ion-label position="floating"><p>Adresse</p></ion-label>
+                <ion-input [(ngModel)]="ctrl.wohnung.description" clearInput
+                           name="description"
+                           placeholder="Beschreibung der Wohnung" required="true"></ion-input>
+                <ion-input [(ngModel)]="ctrl.wohnung.address" clearInput name="address"
+                           placeholder="Straße" required="true"></ion-input>
+                <ion-input [(ngModel)]="ctrl.wohnung.postalCode" clearInput name="postalCode"
+                           placeholder="Postleitzahl" required="true"></ion-input>
+                <ion-input [(ngModel)]="ctrl.wohnung.city" clearInput name="city" placeholder="Stadt"
+                           required="true"></ion-input>
+                <ion-input [(ngModel)]="ctrl.wohnung.country" clearInput name="country"
+                           placeholder="Land" required="true"></ion-input>
+            </ion-item>
 
-        <ion-item>
-            <ion-label position="floating"><p>Details </p></ion-label>
-            <ion-input type="number" [(ngModel)]="ctrl.wohnung.rent" clearInput name="rent"
-                       placeholder="Gesamtmiete" required="true"></ion-input>
-            <ion-input type="number" [(ngModel)]="ctrl.wohnung.surfaceArea" clearInput name="surfaceArea"
-                       placeholder="m2" required="true"></ion-input>
-            <ion-input type="number" [(ngModel)]="ctrl.wohnung.roomCount" clearInput name="roomCount"
-                       placeholder="Raumanzahl" required="true"></ion-input>
-        </ion-item>
-        <div *ngIf="!edit">
-            <ion-button [disabled]="form.invalid" class="inseratButton" color="success" expand="full" type="submit">
-                Inseriere Wohnung
-            </ion-button>
-        </div>
-        <div *ngIf="edit">
-            <ion-button [disabled]="form.invalid" class="inseratButton" color="success" expand="full" type="submit">
-                Wohnung Speichern
-            </ion-button>
-        </div>
-    </form>
+            <ion-item>
+                <ion-label position="floating"><p>Details </p></ion-label>
+                <ion-input type="number" [(ngModel)]="ctrl.wohnung.rent" clearInput name="rent"
+                           placeholder="Gesamtmiete" required="true"></ion-input>
+                <ion-input type="number" [(ngModel)]="ctrl.wohnung.surfaceArea" clearInput name="surfaceArea"
+                           placeholder="m2" required="true"></ion-input>
+                <ion-input type="number" [(ngModel)]="ctrl.wohnung.roomCount" clearInput name="roomCount"
+                           placeholder="Raumanzahl" required="true"></ion-input>
+            </ion-item>
+            <div *ngIf="!edit">
+                <ion-button [disabled]="form.invalid" class="inseratButton" color="success" expand="full"
+                            type="submit">
+                    Inseriere Wohnung
+                </ion-button>
+            </div>
+            <div *ngIf="edit">
+                <ion-button [disabled]="form.invalid" class="inseratButton" color="success" expand="full"
+                            type="submit">
+                    Wohnung Speichern
+                </ion-button>
+            </div>
+        </form>
+    </ion-card>
 </ion-content>
 
