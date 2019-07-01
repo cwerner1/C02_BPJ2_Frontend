@@ -15,30 +15,37 @@ ion-app {
   ion-split-pane {
     ion-menu {
       --width: 250px;
+
       ion-toolbar {
         --background: var(--ion-color-favorite);
       }
-      ion-content{
+
+      ion-content {
         --background: var(--ion-color-favorite);
-        ion-list{
+
+        ion-list {
           --background: var(--ion-color-favorite);
         }
-        ion-item{
+
+        ion-item {
           --background: var(--ion-color-favorite);
-          ion-icon{ padding-right: 10px}
+
+          ion-icon {
+            padding-right: 10px
+          }
         }
       }
     }
   }
 }
 
-ion-header{
-  ion-toolbar{
+ion-header {
+  ion-toolbar {
     --background: var(--ion-color-favorite);
   }
 }
 
-.headerLogo{
+.headerLogo {
   display: inline;
   width: 40px;
   height: 40px;
@@ -47,13 +54,13 @@ ion-header{
   margin-left: 10px;
 }
 
-ion-footer{
+ion-footer {
   --background: var(--ion-color-favorite);
   padding: 0 0 0 0;
   margin: 0 0 0 0
 }
 
-.logOut{
+.logOut {
   padding: 0 5px 0 5px;
   margin: 0 0 0 0
 }
@@ -62,7 +69,7 @@ ion-footer{
   display: block;
 }
 
-.cardHeaders{
+.cardHeaders {
 
   background-color: var(--ion-color-favorite);
   border-bottom: solid;
@@ -78,4 +85,15 @@ ion-footer{
   font-variant: normal;
   text-transform: none;
 
+}
+
+.leer {
+  background-color: #FFFFFF;
+  color: #000000;
+  padding: 12px;
+  margin: 12px 12px 0 12px;
+  font-family: arial;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: 1px;
 }

@@ -7,6 +7,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {WohnungService} from '../services/wohnung.service';
 import {Wohnung} from '../class/wohnung';
 import {AuthService} from '../services/auth.service';
+import {FavoriteService} from '../services/favorite.service';
 
 @Component({
     selector: 'app-wohnung',
@@ -17,7 +18,7 @@ export class WohnungPage implements OnInit {
     private wohnung: Wohnung = null;
     private userID = null;
 
-    constructor(public wohnungService: WohnungService, private route: ActivatedRoute, public authService: AuthService) {
+    constructor(public wohnungService: WohnungService, private route: ActivatedRoute, public authService: AuthService, public favoriteService: FavoriteService) {
         this.authService.redirectToLoginIfNotLoggedIn();
         this.authService.getUserID().then(id => {
             this.userID = id;
@@ -38,6 +39,13 @@ export class WohnungPage implements OnInit {
 
     ngOnInit() {
 
+    }
+
+    addTofavorite(wohnungID: string) {
+        console.log('add To Fav', wohnungID);
+        this.authService.getUserID().then(userID => {
+            this.favoriteService.addFavorite(userID, Number(wohnungID));
+        });
     }
 
 }

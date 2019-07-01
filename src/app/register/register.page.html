@@ -1,4 +1,5 @@
-<ion-header class="ion-hide-lg-up">
+<!-- @TODO Tobias - toolbar verstecken - erledigt -->
+<ion-header class="ion-hide">
   <ion-toolbar>
     <ion-title>Register</ion-title>
   </ion-toolbar>
@@ -24,7 +25,10 @@
           </div>
           <div padding>
             <ion-button  size="large" [disabled]="form.invalid" expand="block" type="submit">Register</ion-button>
-            <!-- @TODO Tobias Link einbauen zurück zum Login -->
+            <!-- @TODO Tobias Link einbauen zurück zum Login - erledigt -->
+            <div text-center>
+              <p>If you already have a Flattery-Account, please <a [routerLink]="['/login/']">login</a> here!</p>
+            </div>
           </div>
         </ion-col>
       </ion-row>

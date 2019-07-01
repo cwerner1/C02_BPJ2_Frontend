@@ -4,7 +4,7 @@
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <ion-title>
-            {{wohnung.address}}
+            Detail-Ansicht
         </ion-title>
     </ion-toolbar>
 </ion-header>
@@ -15,19 +15,25 @@
     <div id="profile-bg"></div>
     <div id="content">
         <div id="profile-info">
-            <!-- @Todo Tobias Schraubeschlüssel für editieren -->
+            <!-- @Todo Christian Schraubeschlüssel für editieren - erledigt -->
             <!-- @Todo ✅ Christian Schraubenschlüssel nur anzeigen wenn der aktuelle user  übereinstimmt -  (+usecase dokument )  --- erledigt -->
 
             <div *ngIf="userID==wohnung.userID">
-                <ion-button [routerLink]="['/wohnung/edit/', wohnung.id]" color="success" fill="outline">
+                <ion-button [routerLink]="['/wohnung/edit/', wohnung.id]" color="warning" fill="outline">
                     Edit
                     <ion-icon name="build" slot="end"></ion-icon>
                 </ion-button>
             </div>
+            <div>
+                <ion-button (click)="addTofavorite(wohnung.id)" color="success" fill="outline">
+                    Add to Favorit
+                    <ion-icon name="heart" slot="end"></ion-icon>
+                </ion-button>
+            </div>
 
-            <!-- @Todo Tobias Herzl für Favoriten -->
-            <!-- @Todo Christian Herzl für Favoriten lauffähig machen -->
-            <!-- @TODO Tobias  ausgabe des  wohnung.addedAt    | formater von ionic -->
+            <!-- @Todo Tobias Herzl für Favoriten - erledigt -->
+            <!-- @Todo Tobias Herzl für Favoriten lauffähig machen - erledigt -->
+            <!-- @TODO Tobias Ausgabe des  wohnung.addedAt    | formater von ionic - erledigt -->
             <img id="profile-image" src="\assets\flattery_logo.png">
             <h3 id="flat-name">{{wohnung.description}}</h3>
             <h5><i class="ion ion-email">Adresse: {{wohnung.address}}</i></h5>
@@ -37,6 +43,7 @@
             <h5><i>Miete: {{wohnung.rent}}&euro;</i></h5>
             <h5><i>Wohnfläche: {{wohnung.surfaceArea}} m²</i></h5>
             <h5><i>Zimmeranzahl: {{wohnung.roomCount}}</i></h5>
+            <h5><i>Hinzugefügt am: {{wohnung.addedAt.dayOfMonth}}.{{wohnung.addedAt.month | titlecase}}.{{wohnung.addedAt.year}}</i></h5>
         </div>
     </div>
 
