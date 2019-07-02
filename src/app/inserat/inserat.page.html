@@ -34,9 +34,9 @@
                 <ion-input type="number" [(ngModel)]="ctrl.wohnung.rent" clearInput name="rent"
                            placeholder="Gesamtmiete" required="true"></ion-input>
                 <ion-input type="number" [(ngModel)]="ctrl.wohnung.surfaceArea" clearInput name="surfaceArea"
-                           placeholder="m2" required="true"></ion-input>
+                           placeholder="m²" required="true"></ion-input>
                 <ion-input type="number" [(ngModel)]="ctrl.wohnung.roomCount" clearInput name="roomCount"
-                           placeholder="Raumanzahl" required="true"></ion-input>
+                           pattern="^\d*$" placeholder="Raumanzahl" required="true"></ion-input>
             </ion-item>
             <div *ngIf="!edit">
                 <ion-button [disabled]="form.invalid" class="inseratButton" color="success" expand="full"

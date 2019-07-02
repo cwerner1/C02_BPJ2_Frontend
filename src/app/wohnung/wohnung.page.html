@@ -27,13 +27,13 @@
 
             <div *ngIf="!favoriteService.isInFavoriteList(wohnung.id,userID)">
                 <ion-button (click)="addTofavorite(wohnung.id)" color="success" fill="outline">
-                    Add to Favorit
+                    Add to Favorite
                     <ion-icon name="heart" slot="end"></ion-icon>
                 </ion-button>
             </div>
             <div *ngIf="favoriteService.isInFavoriteList(wohnung.id,userID)">
                 <ion-button (click)="removeFromFavorite(wohnung.id)" fill="outline">
-                    remove from Favorit
+                    remove from Favorite
                     <ion-icon name="heart" slot="end"></ion-icon>
                 </ion-button>
             </div>

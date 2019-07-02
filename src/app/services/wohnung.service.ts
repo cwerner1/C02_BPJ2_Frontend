@@ -85,15 +85,18 @@ export class WohnungService {
             .subscribe(data => {
                 const payload = data as JsonResponse;
                 const jsonData = payload.data as IWohnungCreated;
+                if (payload.success) {
+                    this.clearCache();
+                    this.presentMessage('Die Wohnung wurde inseriet', 5000);
 
-                this.clearCache();
-                this.presentMessage('Die Wohnung wurde inseriet', 5000);
-                this.router.navigate(['/wohnung', jsonData.wohnungID]);
-
-                // @TODO  ✅ Christian Add Toast on SAve  - erledigt 🎉🥳 🍺🍺🍺
+                    this.router.navigate(['/wohnung', jsonData.wohnungID]);
+                } else {
+                    this.presentMessage(payload.errorMessage, 5000);
+                }
+                // @TODO  ✅ Christian Add Toast on Save  - erledigt 🎉🥳 🍺🍺🍺
 
             }, error => {
-                this.presentMessage('ein unerwarteter Fehler ist aufgetreten', 5000);
+                this.presentMessage('Ein unerwarteter Fehler ist aufgetreten', 5000);
                 console.error(error);
             });
     }
@@ -110,11 +113,14 @@ export class WohnungService {
             .subscribe(data => {
                 const payload = data as JsonResponse;
                 const jsonData = payload.data as IWohnungCreated;
+                if (payload.success) {
+                    this.clearCache();
+                    this.presentMessage('Die Wohnung wurde gespeichert', 5000);
 
-                this.clearCache();
-                this.presentMessage('Die Wohnung wurde gespeichert', 5000);
-
-                this.router.navigate(['/profil']);
+                    this.router.navigate(['/profil']);
+                } else {
+                    this.presentMessage(payload.errorMessage, 5000);
+                }
                 // @TODO  ✅ Christian Add Toast on update   - erledigt 🎉🥳 🍺🍺🍺
 
             }, error => {
