@@ -13,10 +13,11 @@
             <ion-row justify-content-center>
                 <ion-col>
                     <!-- Input with placeholder -->
-                    <ion-input [(ngModel)]="city" name="Stadt" placeholder="Enter City" required="true"></ion-input>
+                    <ion-input [(ngModel)]="city" name="Stadt" placeholder="Stadtname" required="true"></ion-input>
                 </ion-col>
                 <ion-col>
-                    <ion-button [disabled]="form.invalid" color="light" size="small" type="submit">Show Results
+                    <ion-button [disabled]="form.invalid" color="light" size="small" type="submit">Durchschnitt
+                        anzeigen
                     </ion-button>
                 </ion-col>
             </ion-row>
@@ -42,7 +43,7 @@
                         <img class="headerLogo" src="\assets\flattery_logo.png">
                     </ion-card-header>
                     <ion-card-content>
-                        <div class="leer"> Wir haben leider noch nicht genug Daten für deine Anfrage.</div>
+                        <div class="leer">Wir haben leider noch nicht genug Daten für deine Anfrage.</div>
                     </ion-card-content>
                 </ion-card>
             </ion-col>

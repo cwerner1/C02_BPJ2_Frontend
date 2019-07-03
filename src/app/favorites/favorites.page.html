@@ -9,9 +9,7 @@
 
 <ion-content>
     <ion-card>
-        <ion-card-header class="cardHeaders" color="light">Your Favorites</ion-card-header>
-        <!--@TODO Tobias // Anzeigen wenn keine Favoriten hinzugefügt wurden - erledigt-->
-        <!--@TODO Tobias // Anzeigen Styling anpassen -->
+        <ion-card-header class="cardHeaders" color="light">Deine Favoriten</ion-card-header>
         <ion-card-content>
             <div class="leer" *ngIf="items.length == 0"><p>Du hast noch keine Favoriten hinzugefügt.</p>
                 <p>Füge deine Favoriten hinzu in unserer <a [routerLink]="['/list/']">Wohnungssuche</a></p>

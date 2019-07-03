@@ -15,32 +15,27 @@
     <div id="profile-bg"></div>
     <div id="content">
         <div id="profile-info">
-            <!-- @Todo Christian Schraubeschlüssel für editieren - erledigt -->
-            <!-- @Todo ✅ Christian Schraubenschlüssel nur anzeigen wenn der aktuelle user  übereinstimmt -  (+usecase dokument )  --- erledigt -->
 
             <div *ngIf="userID==wohnung.userID">
                 <ion-button [routerLink]="['/wohnung/edit/', wohnung.id]" color="warning" fill="outline">
-                    Edit
+                    editieren
                     <ion-icon name="build" slot="end"></ion-icon>
                 </ion-button>
             </div>
 
             <div *ngIf="!favoriteService.isInFavoriteList(wohnung.id,userID)">
                 <ion-button (click)="addTofavorite(wohnung.id)" color="success" fill="outline">
-                    Add to Favorite
+                    zu den Favoriten hinzufügen
                     <ion-icon name="heart" slot="end"></ion-icon>
                 </ion-button>
             </div>
             <div *ngIf="favoriteService.isInFavoriteList(wohnung.id,userID)">
                 <ion-button (click)="removeFromFavorite(wohnung.id)" fill="outline">
-                    remove from Favorite
+                    aus den Favoriten entfernen
                     <ion-icon name="heart" slot="end"></ion-icon>
                 </ion-button>
             </div>
 
-            <!-- @Todo Tobias Herzl für Favoriten - erledigt -->
-            <!-- @Todo Tobias Herzl für Favoriten lauffähig machen - erledigt -->
-            <!-- @TODO Tobias Ausgabe des  wohnung.addedAt    | formater von ionic - erledigt -->
 
             <img id="profile-image" src="\assets\flattery_logo.png">
             <h3 id="flat-name">{{wohnung.description}}</h3>
@@ -51,7 +46,8 @@
             <h5><i>Miete: {{wohnung.rent}}&euro;</i></h5>
             <h5><i>Wohnfläche: {{wohnung.surfaceArea}} m²</i></h5>
             <h5><i>Zimmeranzahl: {{wohnung.roomCount}}</i></h5>
-            <h5><i>Hinzugefügt am: {{wohnung.addedAt.dayOfMonth}}.{{wohnung.addedAt.month | titlecase}}.{{wohnung.addedAt.year}}</i></h5>
+            <h5><i>Hinzugefügt am: {{wohnung.addedAt.dayOfMonth}}.{{wohnung.addedAt.monthValue}}
+                .{{wohnung.addedAt.year}}</i></h5>
         </div>
     </div>
 

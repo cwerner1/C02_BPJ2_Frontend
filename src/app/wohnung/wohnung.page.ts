@@ -25,7 +25,6 @@ export class WohnungPage implements OnInit {
         });
     }
 
-    // @TODO ✅ Christian Wohnung lädt nicht immer richtig   - erledigt
     ionViewWillEnter() {
         this.wohnung = null;
         const id = this.route.snapshot.paramMap.get('id');
@@ -42,14 +41,12 @@ export class WohnungPage implements OnInit {
     }
 
     addTofavorite(wohnungID: string) {
-        console.log('add To Fav', wohnungID);
         this.authService.getUserID().then(userID => {
             this.favoriteService.addFavorite(userID, Number(wohnungID));
         });
     }
 
     removeFromFavorite(wohnungID: string) {
-        console.log('remove From Fav', wohnungID);
         this.authService.getUserID().then(userID => {
             this.favoriteService.removeFavorite(userID, Number(wohnungID));
         });

@@ -64,7 +64,6 @@ export class ListPage implements OnInit {
     }
 
     addTofavorite(wohnungID: string) {
-        console.log('add To Fav', wohnungID);
         this.authService.getUserID().then(userID => {
             this.favoriteService.addFavorite(userID, Number(wohnungID));
         });

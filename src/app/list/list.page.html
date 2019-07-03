@@ -11,7 +11,7 @@
 
 <ion-content overflow-scroll="false">
     <ion-card>
-        <ion-card-header class="cardHeaders" color="light">Find your Flat</ion-card-header>
+        <ion-card-header class="cardHeaders" color="light">Finde deine Wohnung</ion-card-header>
         <ion-card-content>
     <ion-item-sliding #itemSliding *ngFor="let item of items">
         <ion-item [routerLink]="['/wohnung/', item.id]" id="w{{item.id}}">

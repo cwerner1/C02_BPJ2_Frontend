@@ -93,7 +93,6 @@ export class WohnungService {
                 } else {
                     this.presentMessage(payload.errorMessage, 5000);
                 }
-                // @TODO  ✅ Christian Add Toast on Save  - erledigt 🎉🥳 🍺🍺🍺
 
             }, error => {
                 this.presentMessage('Ein unerwarteter Fehler ist aufgetreten', 5000);
@@ -121,9 +120,9 @@ export class WohnungService {
                 } else {
                     this.presentMessage(payload.errorMessage, 5000);
                 }
-                // @TODO  ✅ Christian Add Toast on update   - erledigt 🎉🥳 🍺🍺🍺
 
             }, error => {
+                this.presentMessage('Ein unerwarteter Fehler ist aufgetreten', 5000);
                 console.error(error);
             });
     }

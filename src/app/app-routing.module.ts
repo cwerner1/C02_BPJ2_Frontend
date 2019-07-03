@@ -19,10 +19,10 @@ const routes: Routes = [
     {path: 'preisvergleich', loadChildren: './preisvergleich/preisvergleich.module#PreisvergleichPageModule'},
     {path: 'login', loadChildren: './login/login.module#LoginPageModule'},
     {path: 'register', loadChildren: './register/register.module#RegisterPageModule'},
-    // {path: 'special', component: SpecialPage, canActivate: [AuthGuard]},
-    //   {path: 'wohnung', loadChildren: './wohnung/wohnung.module#WohnungPageModule'}
     {path: 'wohnung/:id', loadChildren: './wohnung/wohnung.module#WohnungPageModule'},
     {path: 'wohnung/edit/:id', loadChildren: './inserat/inserat.module#InseratPageModule'},
+    // {path: 'special', component: SpecialPage, canActivate: [AuthGuard]},
+    //   {path: 'wohnung', loadChildren: './wohnung/wohnung.module#WohnungPageModule'}
 
 
 

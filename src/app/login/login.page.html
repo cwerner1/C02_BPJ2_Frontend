@@ -10,9 +10,7 @@
             <ion-row justify-content-center>
                 <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
                     <div text-center>
-                        <h4>Flattery Login</h4>
-
-                        <!-- @TODO  ✅ Christian Toast für Fehlermeldungen  - erledigt 🎉🥳-->
+                        <h4>Flattery Anmelden</h4>
                     </div>
                     <div padding>
                         <ion-item>
@@ -21,23 +19,20 @@
                         </ion-item>
 
                         <ion-item>
-                            <ion-input [(ngModel)]="password" name="password" placeholder="Password"
+                            <ion-input [(ngModel)]="password" name="password" placeholder="Passwort"
                                        type="password"></ion-input>
                         </ion-item>
                     </div>
 
                     <div padding>
-                        <ion-button [disabled]="form.invalid" expand="block" size="large" type="submit">Login
+                        <ion-button [disabled]="form.invalid" expand="block" size="large" type="submit">Anmelden
                         </ion-button>
-                        <!-- @TODO Tobias umbau auf einen link - erledigt  -->
-                        <!--<ion-button [routerLink]="['/register/']">-->
                         <div text-center>
-                            <p>If you don't have a Flattery-Account yet, please <a
-                                    [routerLink]="['/register/']">register</a> here!</p>
+                            <p>Falls du keinen Flattery-Account besitzt, bitte <a [routerLink]="['/register/']">registriere
+                                hier</a> einen Account</p>
                         </div>
                     </div>
 
-                    <!--</ion-button>-->
                 </ion-col>
             </ion-row>
         </ion-grid>

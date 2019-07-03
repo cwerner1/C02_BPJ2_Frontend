@@ -37,12 +37,10 @@ export class ProfilPage implements OnInit {
             this.profilService.getUserDetailById(id).subscribe(response => {
                 const payload = response as JsonResponse;
                 this.user = payload.data;
-                console.log('User Data:s', payload.data);
             });
             this.wohnungService.listAllByUserID(id).subscribe(response => {
                 const payload = response as JsonResponse;
                 this.items = payload.data;
-                console.log('wohnungen by User:', payload.data);
             });
         });
     }
