@@ -5,7 +5,7 @@ set -x
 echo "current path $(pwd)"
 ls
 # Build Ionic App for Android
-cordova platform add android --nofetch
+ionic cordova platform add android --nofetch
 
 if [[ "$TRAVIS_BRANCH" == "develop" ]]
 then
