@@ -1,6 +1,8 @@
 #!/bin/bash -v
 
 set -e
+set -x
+pwd
 
 # Build Ionic App for Android
 cordova platform add android --nofetch
