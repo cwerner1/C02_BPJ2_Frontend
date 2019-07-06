@@ -2,7 +2,7 @@
 
 set -e
 set -x
-pwd
+echo "current path $(pwd)"
 
 # Build Ionic App for Android
 cordova platform add android --nofetch
