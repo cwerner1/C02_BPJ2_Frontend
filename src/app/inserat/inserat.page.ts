@@ -15,8 +15,8 @@ import {AuthService} from '../services/auth.service';
 })
 
 export class InseratPage implements OnInit {
-    public wohnung: {} = {};
-    private ctrl = this;
+    public wohnung: Wohnung;
+    public ctrl = this;
     public edit = false;
     private userID = null;
     private wohnungID = null;
@@ -41,7 +41,7 @@ export class InseratPage implements OnInit {
         this.authService.getUserID().then((userId) => {
             this.userID = userId;
         });
-        this.wohnung = {};
+        this.wohnung = null;
     }
 
     ngOnInit() {

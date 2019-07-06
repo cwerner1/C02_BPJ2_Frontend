@@ -15,7 +15,7 @@ import {FavoriteService} from '../services/favorite.service';
     styleUrls: ['./wohnung.page.scss'],
 })
 export class WohnungPage implements OnInit {
-    private wohnung: Wohnung = null;
+    public wohnung: Wohnung = null;
     private userID = null;
 
     constructor(public wohnungService: WohnungService, private route: ActivatedRoute, public authService: AuthService, public favoriteService: FavoriteService) {

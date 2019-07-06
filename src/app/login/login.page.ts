@@ -10,8 +10,8 @@ import {Router} from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-    private email: string; // prefil if once logged in
-    private password: string;
+    public email: string; // prefil if once logged in
+    public password: string;
 
 
     constructor(public menuCtrl: MenuController, public authService: AuthService, private router: Router) {
