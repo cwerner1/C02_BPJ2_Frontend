@@ -118,6 +118,17 @@
     rxjs "6.6.3"
     source-map "0.7.3"
 
+"@angular-devkit/core@11.2.13", "@angular-devkit/core@^11.1.4":
+  version "11.2.13"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-11.2.13.tgz#7829862132555a52009d0af9671b06ffdf9200f1"
+  integrity sha512-GL97DZXeQCecqZmaIeMfG/XtHv6e7FM+uygMePNF9yn4cml32bSp4P5oRjDMgj7iFl6GIU81n8TstTMmFbt85w==
+  dependencies:
+    ajv "6.12.6"
+    fast-json-stable-stringify "2.1.0"
+    magic-string "0.25.7"
+    rxjs "6.6.3"
+    source-map "0.7.3"
+
 "@angular-devkit/core@11.2.5":
   version "11.2.5"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-11.2.5.tgz#f9ba8288a6cc388808ee639c383dada50d64d06a"
@@ -129,18 +140,7 @@
     rxjs "6.6.3"
     source-map "0.7.3"
 
-"@angular-devkit/core@^11.1.4":
-  version "11.2.7"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-11.2.7.tgz#65963736fae633f5b77af62b0637f422ff5c410b"
-  integrity sha512-oflo+LsUob5nF0PknivtRdkHH/iMbVNIPRnv/c52Nk7+FUlEx53pkLWBc2rdhTrEptBFMmrpNaa30P+TQrFNkQ==
-  dependencies:
-    ajv "6.12.6"
-    fast-json-stable-stringify "2.1.0"
-    magic-string "0.25.7"
-    rxjs "6.6.3"
-    source-map "0.7.3"
-
-"@angular-devkit/schematics@11.1.4", "@angular-devkit/schematics@^11.1.4":
+"@angular-devkit/schematics@11.1.4":
   version "11.1.4"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-11.1.4.tgz#c14fc484a58e6a63e1fde8404138dd9b2a80e5a2"
   integrity sha512-WWHmBHPabKgrBDM2M5ayA0OdhonNQHld8NjY8jEdwyWI4xEj23C/qDfgQc8sssvpi4LauKSaPozDELl7ItBPXA==
@@ -155,6 +155,15 @@
   integrity sha512-7RoWgpMvhljPhW9CMz1EtqkwNnGpnsPyy0N29ClHPUq+o8wLR0hvbLBDz1fKSF7j1AwRccaQSNTj8KWsjzQJLQ==
   dependencies:
     "@angular-devkit/core" "11.2.5"
+    ora "5.3.0"
+    rxjs "6.6.3"
+
+"@angular-devkit/schematics@^11.1.4":
+  version "11.2.13"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-11.2.13.tgz#ce3b55e7f38ca9c40cb9c9c8d0096bd8e1490bb1"
+  integrity sha512-HMQWs9tsvmsS/QoL+ayxCYqjpP2Qc1x30EJrDU8zPDsaRCe06Uj7VYedBKlHpDGxh0D2F2oRSG1YkXGHr3H/TQ==
+  dependencies:
+    "@angular-devkit/core" "11.2.13"
     ora "5.3.0"
     rxjs "6.6.3"
 
